@@ -1,0 +1,510 @@
+.mediaViewInfo {
+	--web-view-name: HomeScreen;
+	--web-view-id: HomeScreen;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: HomeScreen;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#HomeScreen {
+	position: absolute;
+	width: 375px;
+	height: 812px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: HomeScreen;
+	--web-view-id: HomeScreen;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#BGShapes {
+	opacity: 0.748;
+	position: absolute;
+	width: 672.814px;
+	height: 1249.201px;
+	left: -233.01px;
+	top: -273.429px;
+	overflow: visible;
+}
+#Path_3 {
+	opacity: 0.797;
+	fill: rgba(244,244,244,1);
+}
+.Path_3 {
+	overflow: visible;
+	position: absolute;
+	width: 521.814px;
+	height: 452.201px;
+	left: 151px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_2 {
+	fill: rgba(244,244,244,1);
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+	width: 521.814px;
+	height: 452.201px;
+	left: 0px;
+	top: 797px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Profile_Pic {
+	position: absolute;
+	width: 58px;
+	height: 59px;
+	left: 289px;
+	top: 52px;
+	overflow: visible;
+}
+#Ellipse_1 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(38,38,38,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_1 {
+	position: absolute;
+	overflow: visible;
+	width: 58px;
+	height: 59px;
+	left: 0px;
+	top: 0px;
+}
+#tobi {
+	left: 12px;
+	top: 19px;
+	position: absolute;
+	overflow: visible;
+	width: 35px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(112,112,112,1);
+}
+#SearchComp {
+	position: absolute;
+	width: 253.626px;
+	height: 37.625px;
+	left: 56.874px;
+	top: 245.875px;
+	overflow: visible;
+}
+#Icon_ionic-ios-search {
+	fill: rgba(0,0,0,1);
+}
+.Icon_ionic-ios-search {
+	overflow: visible;
+	position: absolute;
+	width: 27px;
+	height: 27.007px;
+	transform: translate(0px, 0px) matrix(1,0,0,1,1.1255,1.1252) rotate(-5deg);
+	transform-origin: center;
+	left: 0px;
+	top: 0px;
+}
+#Line_3 {
+	fill: transparent;
+	stroke: rgba(112,112,112,1);
+	stroke-width: 2px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_3 {
+	overflow: visible;
+	position: absolute;
+	width: 244px;
+	height: 2px;
+	left: 9.626px;
+	top: 37.625px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Allison {
+	left: 140px;
+	top: 245px;
+	position: absolute;
+	overflow: visible;
+	width: 99px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 29px;
+	color: rgba(31,47,22,1);
+}
+#FriendAddButtonComp {
+	position: absolute;
+	width: 235px;
+	height: 39px;
+	left: 70px;
+	top: 308px;
+	overflow: visible;
+}
+#Rectangle_6 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_6 {
+	position: absolute;
+	overflow: visible;
+	width: 235px;
+	height: 39px;
+	left: 0px;
+	top: 0px;
+}
+#AddButton {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 208.909px;
+	top: 15.5px;
+	overflow: visible;
+}
+#Path_1 {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(175,175,175,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_1 {
+	overflow: visible;
+	position: absolute;
+	width: 3px;
+	height: 13px;
+	left: 5px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_5 {
+	fill: transparent;
+	stroke: rgba(173,173,173,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_5 {
+	overflow: visible;
+	position: absolute;
+	width: 13px;
+	height: 3px;
+	left: 0px;
+	top: 5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Rectangle_7 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_7 {
+	display: none;
+	position: absolute;
+	overflow: visible;
+	width: 235px;
+	height: 39px;
+	left: 70px;
+	top: 352px;
+}
+#Allison_Raskin {
+	left: 196px;
+	top: 322px;
+	position: absolute;
+	overflow: visible;
+	width: 70px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 10px;
+	color: rgba(31,47,22,1);
+}
+#Alison_Montgomery {
+	display: none;
+	left: 158px;
+	top: 365px;
+	position: absolute;
+	overflow: visible;
+	width: 109px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: rgba(31,47,22,1);
+}
+#Allison_Bard {
+	display: none;
+	left: 199px;
+	top: 408px;
+	position: absolute;
+	overflow: visible;
+	width: 67px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 11px;
+	color: rgba(31,47,22,1);
+}
+#Rectangle_8 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_8 {
+	display: none;
+	position: absolute;
+	overflow: visible;
+	width: 235px;
+	height: 39px;
+	left: 70px;
+	top: 396px;
+}
+#Component_81__1 {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 278.909px;
+	top: 410.5px;
+	display: none;
+	overflow: visible;
+}
+#Path_1_ {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(175,175,175,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_1_ {
+	overflow: visible;
+	position: absolute;
+	width: 3px;
+	height: 13px;
+	left: 5px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_5_ {
+	fill: transparent;
+	stroke: rgba(173,173,173,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_5_ {
+	overflow: visible;
+	position: absolute;
+	width: 13px;
+	height: 3px;
+	left: 0px;
+	top: 5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Component_81__3 {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	left: 278.909px;
+	top: 367.5px;
+	display: none;
+	overflow: visible;
+}
+#Path_1_ba {
+	fill: rgba(0,0,0,0);
+	stroke: rgba(175,175,175,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Path_1_ba {
+	overflow: visible;
+	position: absolute;
+	width: 3px;
+	height: 13px;
+	left: 5px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_5_ba {
+	fill: transparent;
+	stroke: rgba(173,173,173,1);
+	stroke-width: 3px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_5_ba {
+	overflow: visible;
+	position: absolute;
+	width: 13px;
+	height: 3px;
+	left: 0px;
+	top: 5px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Status_Bar {
+	position: absolute;
+	width: 393px;
+	height: 44px;
+	left: -18px;
+	top: 0px;
+	overflow: visible;
+}
+#Frame {
+	opacity: 0.001;
+	fill: rgba(255,255,255,1);
+}
+.Frame {
+	position: absolute;
+	overflow: visible;
+	width: 393px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+#Status_Bar_bb {
+	position: absolute;
+	width: 358px;
+	height: 18px;
+	left: 21px;
+	top: 13px;
+	overflow: visible;
+}
+#Battery {
+	position: absolute;
+	width: 24.328px;
+	height: 11.333px;
+	left: 333.672px;
+	top: 3.333px;
+	overflow: visible;
+}
+#Border {
+	opacity: 0.35;
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 10;
+	shape-rendering: auto;
+}
+.Border {
+	position: absolute;
+	overflow: visible;
+	width: 22px;
+	height: 11.333px;
+	left: 0px;
+	top: 0px;
+}
+#Cap {
+	opacity: 0.4;
+	fill: rgba(0,0,0,1);
+}
+.Cap {
+	overflow: visible;
+	position: absolute;
+	width: 1.328px;
+	height: 4px;
+	left: 23px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Capacity {
+	fill: rgba(0,0,0,1);
+}
+.Capacity {
+	position: absolute;
+	overflow: visible;
+	width: 18px;
+	height: 7.333px;
+	left: 2px;
+	top: 2px;
+}
+#Wifi {
+	fill: rgba(0,0,0,1);
+}
+.Wifi {
+	overflow: visible;
+	position: absolute;
+	width: 15.333px;
+	height: 11px;
+	left: 313.339px;
+	top: 3.331px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Cellular_Connection {
+	fill: rgba(0,0,0,1);
+}
+.Cellular_Connection {
+	overflow: visible;
+	position: absolute;
+	width: 17px;
+	height: 10.667px;
+	left: 291.339px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Time_Style {
+	position: absolute;
+	width: 54px;
+	height: 18px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Time {
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	height: 18px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(0,0,0,1);
+	letter-spacing: -0.2px;
+}
+#MenuButton {
+	fill: rgba(0,0,0,1);
+}
+.MenuButton {
+	overflow: visible;
+	position: absolute;
+	width: 24.556px;
+	height: 24.446px;
+	left: 25px;
+	top: 71.116px;
+	transform: matrix(1,0,0,1,0,0);
+}

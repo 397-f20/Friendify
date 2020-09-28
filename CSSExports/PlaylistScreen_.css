@@ -1,0 +1,691 @@
+.mediaViewInfo {
+	--web-view-name: PlaylistScreen ;
+	--web-view-id: PlaylistScreen_;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: PlaylistScreen_;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#PlaylistScreen_ {
+	position: absolute;
+	width: 375px;
+	height: 812px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: PlaylistScreen ;
+	--web-view-id: PlaylistScreen_;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#Component_105__4 {
+	position: absolute;
+	width: 672.814px;
+	height: 1249.201px;
+	left: -255.01px;
+	top: -288.429px;
+	overflow: visible;
+}
+#Path_3 {
+	opacity: 0.797;
+	fill: rgba(244,244,244,1);
+}
+.Path_3 {
+	overflow: visible;
+	position: absolute;
+	width: 521.814px;
+	height: 452.201px;
+	left: 151px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_2 {
+	fill: rgba(244,244,244,1);
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+	width: 521.814px;
+	height: 452.201px;
+	left: 0px;
+	top: 797px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#tobi {
+	left: 302px;
+	top: 71px;
+	position: absolute;
+	overflow: visible;
+	width: 35px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(112,112,112,1);
+}
+#ExpandedBg {
+	fill: rgba(213,230,225,1);
+}
+.ExpandedBg {
+	position: absolute;
+	overflow: visible;
+	width: 343px;
+	height: 803px;
+	left: 19px;
+	top: 44px;
+}
+#Status_Bar {
+	position: absolute;
+	width: 393px;
+	height: 44px;
+	left: -18px;
+	top: 0px;
+	overflow: visible;
+}
+#Frame {
+	opacity: 0.001;
+	fill: rgba(255,255,255,1);
+}
+.Frame {
+	position: absolute;
+	overflow: visible;
+	width: 393px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+#Status_Bar_q {
+	position: absolute;
+	width: 358px;
+	height: 18px;
+	left: 21px;
+	top: 13px;
+	overflow: visible;
+}
+#Battery {
+	position: absolute;
+	width: 24.328px;
+	height: 11.333px;
+	left: 333.672px;
+	top: 3.333px;
+	overflow: visible;
+}
+#Border {
+	opacity: 0.35;
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 10;
+	shape-rendering: auto;
+}
+.Border {
+	position: absolute;
+	overflow: visible;
+	width: 22px;
+	height: 11.333px;
+	left: 0px;
+	top: 0px;
+}
+#Cap {
+	opacity: 0.4;
+	fill: rgba(0,0,0,1);
+}
+.Cap {
+	overflow: visible;
+	position: absolute;
+	width: 1.328px;
+	height: 4px;
+	left: 23px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Capacity {
+	fill: rgba(0,0,0,1);
+}
+.Capacity {
+	position: absolute;
+	overflow: visible;
+	width: 18px;
+	height: 7.333px;
+	left: 2px;
+	top: 2px;
+}
+#Wifi {
+	fill: rgba(0,0,0,1);
+}
+.Wifi {
+	overflow: visible;
+	position: absolute;
+	width: 15.333px;
+	height: 11px;
+	left: 313.339px;
+	top: 3.331px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Cellular_Connection {
+	fill: rgba(0,0,0,1);
+}
+.Cellular_Connection {
+	overflow: visible;
+	position: absolute;
+	width: 17px;
+	height: 10.667px;
+	left: 291.339px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Time_Style {
+	position: absolute;
+	width: 54px;
+	height: 18px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Time {
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	height: 18px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(0,0,0,1);
+	letter-spacing: -0.2px;
+}
+#PlaylistTitle {
+	left: 132px;
+	top: 82px;
+	position: absolute;
+	overflow: visible;
+	width: 187px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 30px;
+	color: rgba(0,0,0,1);
+}
+#SONG {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 50px;
+	top: 151px;
+	overflow: visible;
+}
+#Bg {
+	fill: rgba(244,244,244,1);
+}
+.Bg {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract {
+	left: 73px;
+	top: 42px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11 {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11 {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_ {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 51px;
+	top: 250px;
+	overflow: visible;
+}
+#Bg_ {
+	fill: rgba(244,244,244,1);
+}
+.Bg_ {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_ {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_ {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_ {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_ {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_ba {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 51px;
+	top: 346px;
+	overflow: visible;
+}
+#Bg_bb {
+	fill: rgba(244,244,244,1);
+}
+.Bg_bb {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_bc {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_bd {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_be {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_be {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_bf {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 45px;
+	top: 442px;
+	overflow: visible;
+}
+#Bg_bg {
+	fill: rgba(244,244,244,1);
+}
+.Bg_bg {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_bh {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_bi {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_bj {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_bj {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_bk {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 45px;
+	top: 538px;
+	overflow: visible;
+}
+#Bg_bl {
+	fill: rgba(244,244,244,1);
+}
+.Bg_bl {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_bm {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_bn {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_bo {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_bo {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_bp {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 45px;
+	top: 634px;
+	overflow: visible;
+}
+#Bg_bq {
+	fill: rgba(244,244,244,1);
+}
+.Bg_bq {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_br {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_bs {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_bt {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_bt {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#SONG_bu {
+	position: absolute;
+	width: 286px;
+	height: 74px;
+	left: 45px;
+	top: 730px;
+	overflow: visible;
+}
+#Bg_bv {
+	fill: rgba(244,244,244,1);
+}
+.Bg_bv {
+	position: absolute;
+	overflow: visible;
+	width: 286px;
+	height: 74px;
+	left: 0px;
+	top: 0px;
+}
+#Peach_bw {
+	left: 73px;
+	top: 17px;
+	position: absolute;
+	overflow: visible;
+	width: 56px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	color: rgba(0,0,0,1);
+}
+#Kevin_Abstract_bx {
+	left: 73px;
+	top: 41px;
+	position: absolute;
+	overflow: visible;
+	width: 88px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 12px;
+	color: rgba(112,112,112,1);
+}
+#Rectangle_11_by {
+	fill: rgba(255,255,255,1);
+}
+.Rectangle_11_by {
+	position: absolute;
+	overflow: visible;
+	width: 45px;
+	height: 45px;
+	left: 19px;
+	top: 15px;
+}
+#Arrow {
+	position: absolute;
+	width: 31px;
+	height: 20px;
+	left: 50.5px;
+	top: 89.5px;
+	overflow: visible;
+}
+#Line_6 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 5px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_6 {
+	overflow: visible;
+	position: absolute;
+	width: 34px;
+	height: 5px;
+	left: 2px;
+	top: 10px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_7 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 4px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_7 {
+	overflow: visible;
+	position: absolute;
+	width: 15.657px;
+	height: 15.657px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Line_8 {
+	fill: transparent;
+	stroke: rgba(0,0,0,1);
+	stroke-width: 4px;
+	stroke-linejoin: miter;
+	stroke-linecap: round;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Line_8 {
+	overflow: visible;
+	position: absolute;
+	width: 15.657px;
+	height: 15.657px;
+	left: 0px;
+	top: 10px;
+	transform: matrix(1,0,0,1,0,0);
+}
