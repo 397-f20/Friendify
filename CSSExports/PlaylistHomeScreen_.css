@@ -1,0 +1,395 @@
+.mediaViewInfo {
+	--web-view-name: PlaylistHomeScreen ;
+	--web-view-id: PlaylistHomeScreen_;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+:root {
+	--web-view-ids: PlaylistHomeScreen_;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	border: none;
+}
+#PlaylistHomeScreen_ {
+	position: absolute;
+	width: 375px;
+	height: 812px;
+	background-color: rgba(255,255,255,1);
+	overflow: hidden;
+	--web-view-name: PlaylistHomeScreen ;
+	--web-view-id: PlaylistHomeScreen_;
+	--web-scale-on-resize: true;
+	--web-enable-deep-linking: true;
+}
+#BGshapes {
+	position: absolute;
+	width: 995.685px;
+	height: 1367.359px;
+	left: -216.88px;
+	top: -356.587px;
+	overflow: visible;
+}
+#Path_3 {
+	opacity: 0.797;
+	fill: rgba(244,244,244,1);
+}
+.Path_3 {
+	overflow: visible;
+	position: absolute;
+	width: 514.685px;
+	height: 465.027px;
+	left: 0px;
+	top: 0px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Path_2 {
+	fill: rgba(244,244,244,1);
+}
+.Path_2 {
+	overflow: visible;
+	position: absolute;
+	width: 521.814px;
+	height: 452.201px;
+	left: 473.871px;
+	top: 915.158px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#PlaylistsShape {
+	position: absolute;
+	width: 156px;
+	height: 158px;
+	left: 163px;
+	top: 389px;
+	overflow: visible;
+}
+#Rectangle_3 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_3 {
+	position: absolute;
+	overflow: visible;
+	width: 156px;
+	height: 158px;
+	left: 0px;
+	top: 0px;
+}
+#bops {
+	left: 60px;
+	top: 70px;
+	position: absolute;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(98,98,98,1);
+}
+#PlaylistsShape_p {
+	position: absolute;
+	width: 156px;
+	height: 158px;
+	left: 163px;
+	top: 721px;
+	overflow: visible;
+}
+#Rectangle_3_q {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_3_q {
+	position: absolute;
+	overflow: visible;
+	width: 156px;
+	height: 158px;
+	left: 0px;
+	top: 0px;
+}
+#bops_r {
+	left: 60px;
+	top: 70px;
+	position: absolute;
+	overflow: visible;
+	width: 38px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(98,98,98,1);
+}
+#PlaylistShape {
+	position: absolute;
+	width: 156px;
+	height: 158px;
+	left: 32px;
+	top: 555px;
+	overflow: visible;
+}
+#Rectangle_4 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_4 {
+	position: absolute;
+	overflow: visible;
+	width: 156px;
+	height: 158px;
+	left: 0px;
+	top: 0px;
+}
+#sweaty_joe {
+	left: 39px;
+	top: 70px;
+	position: absolute;
+	overflow: visible;
+	width: 79px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(98,98,98,1);
+}
+#Status_Bar {
+	position: absolute;
+	width: 393px;
+	height: 44px;
+	left: -18px;
+	top: 0px;
+	overflow: visible;
+}
+#Frame {
+	opacity: 0.001;
+	fill: rgba(255,255,255,1);
+}
+.Frame {
+	position: absolute;
+	overflow: visible;
+	width: 393px;
+	height: 44px;
+	left: 0px;
+	top: 0px;
+}
+#Status_Bar_x {
+	position: absolute;
+	width: 358px;
+	height: 18px;
+	left: 21px;
+	top: 13px;
+	overflow: visible;
+}
+#Battery {
+	position: absolute;
+	width: 24.328px;
+	height: 11.333px;
+	left: 333.672px;
+	top: 3.333px;
+	overflow: visible;
+}
+#Border {
+	opacity: 0.35;
+	fill: rgba(0,0,0,0);
+	stroke: rgba(0,0,0,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 10;
+	shape-rendering: auto;
+}
+.Border {
+	position: absolute;
+	overflow: visible;
+	width: 22px;
+	height: 11.333px;
+	left: 0px;
+	top: 0px;
+}
+#Cap {
+	opacity: 0.4;
+	fill: rgba(0,0,0,1);
+}
+.Cap {
+	overflow: visible;
+	position: absolute;
+	width: 1.328px;
+	height: 4px;
+	left: 23px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Capacity {
+	fill: rgba(0,0,0,1);
+}
+.Capacity {
+	position: absolute;
+	overflow: visible;
+	width: 18px;
+	height: 7.333px;
+	left: 2px;
+	top: 2px;
+}
+#Wifi {
+	fill: rgba(0,0,0,1);
+}
+.Wifi {
+	overflow: visible;
+	position: absolute;
+	width: 15.333px;
+	height: 11px;
+	left: 313.339px;
+	top: 3.331px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Cellular_Connection {
+	fill: rgba(0,0,0,1);
+}
+.Cellular_Connection {
+	overflow: visible;
+	position: absolute;
+	width: 17px;
+	height: 10.667px;
+	left: 291.339px;
+	top: 3.667px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#Time_Style {
+	position: absolute;
+	width: 54px;
+	height: 18px;
+	left: 0px;
+	top: 0px;
+	overflow: visible;
+}
+#Time {
+	left: 0px;
+	top: 0px;
+	position: absolute;
+	overflow: visible;
+	width: 55px;
+	height: 18px;
+	text-align: center;
+	font-family: SF Pro Text;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 15px;
+	color: rgba(0,0,0,1);
+	letter-spacing: -0.2px;
+}
+#Joes_Playlists__ {
+	left: 25px;
+	top: 142px;
+	position: absolute;
+	overflow: visible;
+	width: 212px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 29px;
+	color: rgba(38,37,37,1);
+}
+#Joes_Playlists__ {
+	left: 25px;
+	top: 142px;
+	position: absolute;
+	overflow: visible;
+	width: 212px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 29px;
+	color: rgba(38,37,37,1);
+}
+#Menu {
+	fill: rgba(0,0,0,1);
+}
+.Menu {
+	overflow: visible;
+	position: absolute;
+	width: 24.556px;
+	height: 24.446px;
+	left: 25px;
+	top: 71.116px;
+	transform: matrix(1,0,0,1,0,0);
+}
+#PlaylistShape_ {
+	position: absolute;
+	width: 156px;
+	height: 158px;
+	left: 32px;
+	top: 223px;
+	overflow: visible;
+}
+#Rectangle_2 {
+	fill: rgba(213,230,225,1);
+}
+.Rectangle_2 {
+	position: absolute;
+	overflow: visible;
+	width: 156px;
+	height: 158px;
+	left: 0px;
+	top: 0px;
+}
+#PlaylistText {
+	left: 33px;
+	top: 70px;
+	position: absolute;
+	overflow: visible;
+	width: 92px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 15px;
+	color: rgba(98,98,98,1);
+}
+#Profile_Pic {
+	position: absolute;
+	width: 58px;
+	height: 59px;
+	left: 289px;
+	top: 52px;
+	overflow: visible;
+}
+#Ellipse_1 {
+	fill: rgba(255,255,255,1);
+	stroke: rgba(38,38,38,1);
+	stroke-width: 1px;
+	stroke-linejoin: miter;
+	stroke-linecap: butt;
+	stroke-miterlimit: 4;
+	shape-rendering: auto;
+}
+.Ellipse_1 {
+	position: absolute;
+	overflow: visible;
+	width: 58px;
+	height: 59px;
+	left: 0px;
+	top: 0px;
+}
+#tobi {
+	left: 12px;
+	top: 19px;
+	position: absolute;
+	overflow: visible;
+	width: 35px;
+	white-space: nowrap;
+	text-align: left;
+	font-family: Montserrat;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 17px;
+	color: rgba(112,112,112,1);
+}
