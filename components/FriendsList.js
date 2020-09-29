@@ -1,18 +1,18 @@
 import React from 'react';
-import { Touchable, SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import Friend from './Friend';
 
-const friends = ['Joe', 'Tony', 'Allison'];
+const friends = ['Joe', 'Tony', 'Allison', 'Jade'];
 
 const FriendsList = () => {
     return (
-        <SafeAreaView>
+        <View>
         {
             friends.map(friend => (
-                <Friend friend = {friend}/>
+                <Friend key={friend} friend={friend}/>
             ))
         }
-        </SafeAreaView>
+        </View>
     );
 };
 
