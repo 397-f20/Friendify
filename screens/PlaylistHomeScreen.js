@@ -1,26 +1,29 @@
 import React from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
-import FriendsList from '../components/FriendsList';
-import { createStackNavigator } from '@react-navigation/stack';
+import Playlist from '../components/Playlist'
 
-const Stack = createStackNavigator();
+const playlists = ['rock', 'pop', 'chill', 'party']
 
-const FriendsScreen = ({navigation}) => {
+const PlaylistHomeScreen = ({friend}) => {
     return (
         <SafeAreaView style={styles.container}>
-            
             <View style={styles.titleContainer}>
-              <Title style={styles.title}>Friends</Title>
+              <Title style={styles.title}>{`${friend}'s Playlists`}
+              </Title>
             </View>
             <ScrollView style={styles.scroll}>
-              <FriendsList/>
-              {/* <Button title='PLaylist Home' onPress={()=>navigation.navigate('PlaylistHomeScreen')}/> */}
+                <View>
+                    {
+                        playlists.map(playlist => (
+                            <Playlist key={`${friend}, ${playlist}`} playlist={playlist}/>
+                        ))
+                    }
+                </View>
             </ScrollView>
         </SafeAreaView>
     )
 };
-
 
 const styles = StyleSheet.create({
     title: {
@@ -42,4 +45,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FriendsScreen;
+export default PlaylistHomeScreen;
