@@ -1,29 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
+
+import { StyleSheet, SafeAreaView } from 'react-native';
 import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
-import Banner from '../components/banner';
+import Banner from '../components/Banner.js';
+
 
 const HomeScreen = ({navigation}) => {
   return (
-    <View style={styles.container}>
-      <Banner /> 
-      <Card>
-        <Card.Title
-          title="Search for friends"
-          subtitle="Input your friends' Spotify User ID"></Card.Title>
-        <Card.Content>
-          <TextInput label="User ID"></TextInput>
-        </Card.Content>
-        <Card.Actions>
-          <Button>Search</Button>
-          <Button onPress={()=> {navigation.toggleDrawer()}}>
-            Navigation</Button>
-        </Card.Actions>
-      </Card>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaView style={styles.container}>
+        <Banner navigation={navigation} />
+        <Card style={styles.card}>
+          <Card.Title
+            title="Search for friends"
+            subtitle="Input your friends' Spotify User ID"></Card.Title>
+          <Card.Content>
+            <TextInput label="User ID"></TextInput>
+          </Card.Content>
+          <Card.Actions>
+            <Button>Search</Button>
+          </Card.Actions>
+        </Card>
+      {/* <StatusBar style="auto" /> */}
+    </SafeAreaView>
   );
 };
 
@@ -31,8 +29,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    justifyContent: 'center',
+    alignContent: 'flex-start',
   },
+  card: {
+    width: '100%',
+  }
 });
 
 export default HomeScreen;

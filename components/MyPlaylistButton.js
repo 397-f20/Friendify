@@ -1,26 +1,20 @@
 import React from 'react';
 
-import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
 
 
-const Friend = ({name, navigation}) => {
+const MyPlaylistButton = ({playlist}) => {
     return (
-        <TouchableOpacity
-            style={styles.container}
-            onPress={() => navigation.navigate('Playlists', {name})}>
+        <TouchableOpacity style={styles.container}>
             <Avatar.Image
-                size={30}
+                size={50}
                 source={require('../assets/favicon.png')}
                 style={styles.icon}
             />
             <Text style={styles.text}>
-                {name}
+                {playlist}
             </Text>
-            <Image
-                style={styles.arrow}
-                source={require('../CSSExports/Carrot_s.png')}
-            />
         </TouchableOpacity>
     );
 };
@@ -49,4 +43,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default Friend;
+export default MyPlaylistButton;

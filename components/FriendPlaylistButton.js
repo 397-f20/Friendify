@@ -1,8 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Text, ScrollView, TouchableOpacity} from 'react-native';
+
+import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
 
-const Playlist = ({playlist}) => {
+
+const FriendPlaylistButton = ({playlist}) => {
     return (
         <TouchableOpacity style={styles.container}>
             <Avatar.Image
@@ -14,17 +16,17 @@ const Playlist = ({playlist}) => {
                 {playlist}
             </Text>
         </TouchableOpacity>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F4F4F4',
-        flexDirection: 'column',
+        flexDirection: 'row',
         borderRadius: 20,
         height: 80,
-        width: 100,
+        width: '100%',
         marginVertical: 5,
         alignItems: 'center',
         padding: 10,
@@ -36,6 +38,9 @@ const styles = StyleSheet.create({
     icon: {
         marginRight: 30
     },
-  });
+    arrow: {
+        marginLeft: 'auto',
+    }
+});
 
-export default Playlist;
+export default FriendPlaylistButton;

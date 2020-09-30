@@ -1,47 +1,46 @@
 import React from 'react';
-import { StyleSheet, Button, Image, TouchableOpacity, View} from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, View} from 'react-native';
 
 
-
-
-const Banner  = ({navigation}) => {
+const Banner = ({navigation}) => {
     return ( 
         <View style={styles.container}>
-         <TouchableOpacity onPress={()=> {navigation.toggleDrawer()}}>
+            <TouchableOpacity onPress={()=> {navigation.toggleDrawer()}}>
             <Image 
                 style={styles.burger}
-                source={require('../CSSExports/Carrot_s.png')}
+                source={require('../assets/menu.png')}
             />      
             </TouchableOpacity>
-        <Button title='ProfileBtn' style={styles.Profile_Pic} onPress={()=> {Profile.toggleDrawer()}}/>
+            <TouchableOpacity>
+                <Image 
+                    style={styles.profile}
+                    source={require('../assets/favicon.png')}
+                />      
+            </TouchableOpacity>
         </View>
-        )
-    
+        )   
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        
-    },
-    Profile_Pic: {
-        left: 60,
-        top: 71,
-        borderRadius:10,
-        width: 35,
-        color: '#000',
-        //border: '#262626',
-        overflow: 'visible',
-        position: 'absolute'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 20,
+        width: '100%',
+        paddingLeft: 20,
+        paddingRight: 20,
+        marginTop: 10,
     },
     burger: {
-        left: 50,
-        top: 71,
-        overflow: 'visible',
+        width: 22,
+        height: 22,
+    },
+    profile: {
+       width: 30,
+       height: 30,
+       borderRadius: 200,
     }
-
-
-  
- 
 });
 
 export default Banner;
