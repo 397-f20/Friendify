@@ -1,20 +1,26 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const FriendsScreen = () => {
+const Stack = createStackNavigator();
+
+const FriendsScreen = ({navigation}) => {
     return (
         <SafeAreaView style={styles.container}>
+            
             <View style={styles.titleContainer}>
               <Title style={styles.title}>Friends</Title>
             </View>
             <ScrollView style={styles.scroll}>
-              <FriendsList/> 
+              <FriendsList/>
+              {/* <Button title='PLaylist Home' onPress={()=>navigation.navigate('PlaylistHomeScreen')}/> */}
             </ScrollView>
         </SafeAreaView>
     )
 };
+
 
 const styles = StyleSheet.create({
     title: {
