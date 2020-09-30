@@ -1,26 +1,21 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
-import Playlist from '../components/Playlist'
+import FriendPlaylists from '../components/FriendPlaylists'
 
-const playlists = ['rock', 'pop', 'chill', 'party']
 
-//We need to implement a back button. This could be easily done by
-// making a button on using onPress={() => setFriend(false)}
-const PlaylistHomeScreen = ({friend, setFriend}) => {
+const FriendPlaylistScreen = ({navigation, route}) => {
+    name = route.params.name;
+    const playlists = ['Rock', 'Pop', 'Chill', 'Party'];
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-              <Title style={styles.title}>{`${friend}'s Playlists`}
-              </Title>
+                <Title style={styles.title}>{`${name}'s Playlists`}</Title>
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    {
-                        playlists.map(playlist => (
-                            <Playlist key={`${friend}, ${playlist}`} playlist={playlist}/>
-                        ))
-                    }
+                    <FriendPlaylists playlists={playlists} />
                 </View>
             </ScrollView>
         </SafeAreaView>
@@ -47,4 +42,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default PlaylistHomeScreen;
+export default FriendPlaylistScreen;

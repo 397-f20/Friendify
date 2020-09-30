@@ -1,16 +1,14 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
+
 import { StyleSheet, SafeAreaView } from 'react-native';
-import { Provider as PaperProvider } from 'react-native-paper';
 import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
-import { block } from 'react-native-reanimated';
 import Banner from '../components/Banner';
 
 
 const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-        <Banner navigation={navigation}/>
+        <Banner navigation={navigation} />
         <Card style={styles.card}>
           <Card.Title
             title="Search for friends"

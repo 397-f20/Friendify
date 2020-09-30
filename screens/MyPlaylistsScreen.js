@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
-import { Title } from 'react-native-paper';
-import FriendsList from '../components/FriendsList';
+import MyPlaylists from '../components/MyPlaylists';
 import Banner from '../components/Banner';
+import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
+import { Title } from 'react-native-paper';
 
 
-const FriendsScreen = ({navigation}) => {
-    const [friends, setFriends] = useState(['Adam', 'Bob', 'Chris', 'David']);
+const MyPlaylistsScreen = ({navigation}) => {
+    const playlists = ['Bob\'s Rock Playlist', 'Pop Mix', 'David\'s Chill and Party', 'Adam\'s Mix'];
 
     return (
-      <SafeAreaView style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <Banner navigation={navigation} />
               <View style={styles.titleContainer}>
-                  <Title style={styles.title}>Friends</Title>
+                  <Title style={styles.title}>My Playlists</Title>
               </View>
               <ScrollView style={styles.scroll}>
-                  <FriendsList friends={friends} navigation={navigation} />
+                  <MyPlaylists playlists={playlists} />
               </ScrollView>
         </SafeAreaView>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -42,4 +42,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FriendsScreen;
+export default MyPlaylistsScreen;
