@@ -5,6 +5,8 @@ import Playlist from '../components/Playlist'
 
 const playlists = ['rock', 'pop', 'chill', 'party']
 
+//We need to implement a back button. This could be easily done by
+// making a button on using onPress={() => setFriend(false)}
 const PlaylistHomeScreen = ({friend, setFriend}) => {
     return (
         <SafeAreaView style={styles.container}>
