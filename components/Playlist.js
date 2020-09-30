@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, View, SafeAreaView, Text, ScrollView, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
 
 const Playlist = ({playlist}) => {

@@ -5,7 +5,7 @@ import Playlist from '../components/Playlist'
 
 const playlists = ['rock', 'pop', 'chill', 'party']
 
-const PlaylistHomeScreen = ({friend}) => {
+const PlaylistHomeScreen = ({friend, setFriend}) => {
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>

@@ -6,7 +6,6 @@ import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
 import Banner from '../components/banner';
 
 const HomeScreen = ({navigation}) => {
-
   return (
     <View style={styles.container}>
       <Banner /> 
