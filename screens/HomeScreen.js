@@ -2,7 +2,7 @@ import React from 'react';
 
 import { StyleSheet, SafeAreaView } from 'react-native';
 import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
-import Banner from '../components/Banner';
+import Banner from '../components/Banner.js';
 
 
 const HomeScreen = ({navigation}) => {
