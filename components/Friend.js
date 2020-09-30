@@ -4,18 +4,18 @@ import PlaylistHomeScreen from '../screens/PlaylistHomeScreen';
 import { Avatar } from 'react-native-paper';
 
 
-const Friend = ({friend, setFriend}) => {
+const Friend = ({name, viewPlaylist}) => {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => setFriend(friend)}>
+            onPress={() => viewPlaylist}>
             <Avatar.Image
                 size={30}
                 source={require('../assets/favicon.png')}
                 style={styles.icon}
             />
             <Text style={styles.text}>
-                {friend}
+                {name}
             </Text>
             <Image
                 style={styles.arrow}

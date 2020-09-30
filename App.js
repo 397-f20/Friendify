@@ -6,6 +6,7 @@ import PlaylistHomeScreen from './screens/PlaylistHomeScreen.js';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
+
 const Drawer = createDrawerNavigator();
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
           component={PlaylistHomeScreen}
           options={{ title: 'Playlists'}}
         />
-     </Drawer.Navigator> 
+      </Drawer.Navigator> 
     </NavigationContainer>
   );
 };
