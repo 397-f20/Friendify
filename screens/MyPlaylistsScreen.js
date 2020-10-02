@@ -1,7 +1,7 @@
 import React from 'react';
 
 import MyPlaylists from '../components/MyPlaylists';
-import Banner from '../components/Banner';
+import Banner from '../components/banner';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
-import Banner from '../components/Banner.js';
+import Banner from '../components/banner';
 import firebase from "../shared/firebase.js"
 
 const db = firebase.firestore()
