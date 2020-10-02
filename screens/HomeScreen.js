@@ -25,6 +25,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <Banner navigation={navigation} />
+      <View style={styles.cardContainer}>
         <Card style={styles.card}>
           <Card.Title
             title = "Friends"
@@ -37,6 +38,7 @@ const HomeScreen = ({navigation}) => {
             <Button onPress={() => AddFriend(friend)} >Add Friend</Button>
           </Card.Actions>
         </Card>
+      </View>
       {/* <StatusBar style="auto" /> */}
     </SafeAreaView>
   );
@@ -48,6 +50,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     textAlign: 'left',
+  },
+  cardContainer: {
+    flex: 1, 
+    justifyContent: 'flex-start', 
+    marginBottom: 250,
   },
   card: {
     width: '100%',
