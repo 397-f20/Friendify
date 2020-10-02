@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         marginTop: 10,
+        maxHeight: 30,
     },
     burger: {
         width: 22,

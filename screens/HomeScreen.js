@@ -53,8 +53,9 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     flex: 1, 
-    justifyContent: 'flex-start', 
     marginBottom: 250,
+    width: '80%',
+    justifyContent: 'center',
   },
   card: {
     width: '100%',
