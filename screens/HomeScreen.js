@@ -1,58 +1,40 @@
 import React from 'react';
 
-import { StyleSheet, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
 import Banner from '../components/Banner.js';
 import { AsyncStorage } from 'react-native';
 import { getRedirectUrl, useAuthRequest, makeRedirectUri } from 'expo-auth-session';
+import firebase from "../shared/firebase.js"
 makeRedirectUri()
-console.log("this is the redirect url: " + getRedirectUrl())
 
-_initData = async () => {
-  try {
-    await AsyncStorage.setItem(
-      '@Friends:key',
-      'Joe'
-    );
-  } catch (error) {
-    // Error saving data
-  }
-};
+const db = firebase.firestore()
 
-const AddFriend = (friend) => {
-  try {
-    const value = await AsyncStorage.getItem('Friends');
-    if (value !== null) {
-      // We have data!!
-      console.log(value);
-      try {
-        await AsyncStorage.setItem(
-          '@Friends:key',
-          value,
-          friend
-        );
-      } catch (error) {
-      }
-    }
-  } catch (error) {
-    // Error retri
-  } 
-}
 
 const HomeScreen = ({navigation}) => {
+  const AddFriend = (friend) => {
+    db.collection('friends').add( {
+      name: friend
+    }).then(
+      setAdded(true)
+    )
+  }
   const [friend, setFriend] = React.useState("")
+  //added tells us if they have added a friend
+  const [added, setAdded] = React.useState(false)
   return (
     <SafeAreaView style={styles.container}>
-        <Banner navigation={navigation} />
+      <Banner navigation={navigation} />
         <Card style={styles.card}>
           <Card.Title
             title = "Friends"
-            subtitle="Input your friends' Spotify User ID"></Card.Title>
+            subtitle="Input your friends' Spotify User ID to add to your friend's list"></Card.Title>
           <Card.Content>
             <TextInput label="User ID" onChangeText={(value) => setFriend(value)}></TextInput>
+            {(added) ? <Text>Added {friend}!</Text> : false}
           </Card.Content>
           <Card.Actions>
-            <Button onPress={() => AddFriend(friend)} >Search</Button>
+            <Button onPress={() => AddFriend(friend)} >Add Friend</Button>
           </Card.Actions>
         </Card>
       {/* <StatusBar style="auto" /> */}
@@ -64,8 +46,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignContent: 'flex-start',
-    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'left',
   },
   card: {
     width: '100%',
