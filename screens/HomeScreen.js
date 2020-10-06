@@ -1,11 +1,12 @@
 import React from 'react';
-
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
 import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
 import { AsyncStorage } from 'react-native';
 import { getRedirectUrl, useAuthRequest, makeRedirectUri } from 'expo-auth-session';
 import firebase from "../shared/firebase.js"
 makeRedirectUri()
+
+
 
 const db = firebase.firestore()
 
