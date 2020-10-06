@@ -19,7 +19,7 @@ const FriendPlaylistScreen = ({navigation, route}) => {
                 </View>
             </ScrollView>
         </SafeAreaView>
-    )
+    );
 };
 
 const styles = StyleSheet.create({

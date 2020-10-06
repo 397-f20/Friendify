@@ -5,8 +5,8 @@ import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
 import firebase from "../shared/firebase.js"
 
-const db = firebase.firestore()
 
+const db = firebase.firestore()
 
 const FriendsScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
@@ -30,9 +30,8 @@ const FriendsScreen = ({navigation}) => {
               </View>
               <ScrollView style={styles.scroll}>
                 <View>
-                <FriendsList friends={friends} navigation={navigation} />
+                  <FriendsList friends={friends} navigation={navigation} />
                 </View>
-               
               </ScrollView>
         </SafeAreaView>
     )

@@ -14,7 +14,7 @@ const MyPlaylistsScreen = ({navigation}) => {
                   <Title style={styles.title}>My Playlists</Title>
               </View>
               <ScrollView style={styles.scroll}>
-                  <MyPlaylists playlists={playlists} />
+                  <MyPlaylists playlists={playlists} navigation={navigation} />
               </ScrollView>
         </SafeAreaView>
     );

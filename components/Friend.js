@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
-import { Avatar } from 'react-native-paper';
+import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
+import {Avatar} from 'react-native-paper';
 
 
 const Friend = ({name, navigation}) => {
