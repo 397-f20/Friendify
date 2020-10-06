@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
-
+ 
 
 const FriendPlaylistScreen = ({navigation, route}) => {
     name = route.params.name;
@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     titleContainer: {
         width: '80%',
         textAlign: 'left',
-        marginBottom: 30,
+        marginTop: 30,
     },
     container: {
       flex: 1,

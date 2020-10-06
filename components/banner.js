@@ -26,11 +26,11 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginBottom: 20,
         width: '100%',
         paddingLeft: 20,
         paddingRight: 20,
         marginTop: 10,
+        maxHeight: 30,
     },
     burger: {
         width: 22,
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
     profile: {
        width: 30,
        height: 30,
-       borderRadius: 200,
     }
 });
 
