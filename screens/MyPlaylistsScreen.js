@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MyPlaylists from '../components/MyPlaylists';
-import Banner from '../components/banner';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 
@@ -11,7 +10,6 @@ const MyPlaylistsScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.container}>
-          <Banner navigation={navigation} />
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>My Playlists</Title>
               </View>
