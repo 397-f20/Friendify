@@ -3,7 +3,6 @@ import {useFocusEffect} from '@react-navigation/native';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
-import Banner from '../components/banner';
 import firebase from "../shared/firebase.js"
 
 const db = firebase.firestore()
@@ -25,8 +24,7 @@ const FriendsScreen = ({navigation}) => {
     }, []);
 
     return (
-      <SafeAreaView style={styles.container}>
-                <Banner navigation={navigation} style={styles.banner}/>           
+      <SafeAreaView style={styles.container}>         
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>Friends</Title>
               </View>
