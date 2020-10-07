@@ -26,7 +26,7 @@ const GetUserPlaylists = async(user) => {
         console.log(repo)
         console.log(repo.items.map((item) => item.href));
 
-        return repo.items.map((item) => item.href)
+        return repo.items.map((item) => item.name)
     } catch (err) {
         console.error(err);}
         
