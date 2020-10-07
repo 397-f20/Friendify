@@ -3,7 +3,7 @@ import firebase from "../shared/firebase.js";
 
 const db = firebase.firestore();
 
-const GetUserPlaylists = async({user}) => {
+const GetUserPlaylists = async(user) => {
 
     const access = await getTokens();
 
@@ -11,6 +11,7 @@ const GetUserPlaylists = async({user}) => {
       console.log("No access")
     }
     console.log(access)
+    console.log(user)
     
     try {
        // users/{user_id}/playlists 
@@ -22,6 +23,7 @@ const GetUserPlaylists = async({user}) => {
           });
         const repo = await response.json();  
         console.log("here")
+        console.log(repo)
         console.log(repo.items.map((item) => item.href));
 
         return repo.items.map((item) => item.href)
