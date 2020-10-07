@@ -2,18 +2,12 @@ import React from 'react';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
-import GetPlaylist from '../spotifyQ/GetPlaylist';
 
 
 
 
 const FriendPlaylistScreen = ({navigation, route}) => {
-    name = route.params.name;
-    const playlists = ['Rock', 'Pop', 'Chill', 'Party'];
-    console.log("test");
-    GetPlaylist();
-    
-
+    const name = route.params.name
 
     return (
         <SafeAreaView style={styles.container}>
@@ -22,7 +16,7 @@ const FriendPlaylistScreen = ({navigation, route}) => {
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    <FriendPlaylists playlists={playlists} />
+                    <FriendPlaylists name={name} />
                 </View>
             </ScrollView>
         </SafeAreaView>

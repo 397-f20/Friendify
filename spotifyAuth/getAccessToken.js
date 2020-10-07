@@ -2,9 +2,11 @@ import { encode as btoa } from 'base-64';
 import spotifyCredentials from '../secrets.js';
 import firebase from "../shared/firebase.js"
 
-const db = firebase.firestore()
+const db = firebase.firestore();
 
 const getTokens = async () => {
+
+  let token = false
     
   try {
   //  const authorizationCode = await getAuthorizationCode() //we wrote this function above
@@ -26,11 +28,9 @@ const getTokens = async () => {
       expires_in: expiresIn,
     } = responseJson;
     //i want to put responseJson in firebase
-    db.collection('AccessToken').add( {
-        name: responseJson.access_token
-    })
+
     console.log(Object.values(responseJson))
-   
+    token = responseJson.access_token;
 
     const expirationTime = new Date().getTime() + expiresIn * 1000;
  //   await setUserData('accessToken', accessToken);
@@ -39,6 +39,7 @@ const getTokens = async () => {
   } catch (err) {
     console.error(err);
   }
+  return token;
 }
 
-export default getTokens; 
+export default getTokens;

@@ -3,7 +3,7 @@ import firebase from "../shared/firebase.js";
 
 const db = firebase.firestore();
 
-const GetPlaylist = async({userHref}) => {
+const GetUserPlaylists = async({user}) => {
 
     const access = await getTokens();
 
@@ -13,18 +13,23 @@ const GetPlaylist = async({userHref}) => {
     console.log(access)
     
     try {
-        const response = await fetch(`${userHref}/tracks?market=US`, {
+       // users/{user_id}/playlists 
+        const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists/`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${access}`
             }
           });
         const repo = await response.json();  
-        console.log(Object.values(repo));
+        console.log("here")
+        console.log(repo.items.map((item) => item.href));
+
+        return repo.items.map((item) => item.href)
     } catch (err) {
         console.error(err);}
-    
-    console.log("test");
+        
+    console.log("GetUserPlaylists end");
+    return false
 }
 
-export default GetPlaylist
+export default GetUserPlaylists

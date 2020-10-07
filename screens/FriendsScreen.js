@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
@@ -11,7 +11,7 @@ const db = firebase.firestore()
 const FriendsScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
     
-    useFocusEffect(() => {
+    useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
         let newfriends = []
         querySnapshot.forEach(doc =>{

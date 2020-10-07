@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import FriendPlaylistButton from './FriendPlaylistButton';
+import GetUserPlaylists from '../spotifyQ/GetUserPlaylists';
 
 
-const FriendPlaylists = ({playlists}) => {
+
+const FriendPlaylists = ({name}) => {
+
+    const [playlists, setPlaylists] = useState(false)
+    useEffect(() => {
+        GetUserPlaylists(name).then((value) => {
+        console.log(value)
+        setPlaylists(value)
+        }
+    );},[])
+    if(!playlists){
+        return false
+    }
     return (
         playlists.map(playlist => (
             <FriendPlaylistButton key={`${name}, ${playlist}`} playlist={playlist} />
