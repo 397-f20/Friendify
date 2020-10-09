@@ -2,8 +2,8 @@ import React from 'react';
 
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 
+
 const GeneratePlaylistScreen = ({navigation}) => {
-  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>

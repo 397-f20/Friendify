@@ -21,7 +21,7 @@ const GetUserPlaylists = async(user) => {
               Authorization: `Bearer ${access}`
             }
           });
-        const repo = await response.json();  
+        const repo = await response.json();
         console.log("here")
         console.log(repo)
         console.log(repo.items.map((item) => item.href));

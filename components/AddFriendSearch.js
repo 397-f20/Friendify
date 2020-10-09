@@ -1,26 +1,25 @@
 import React from 'react';
-import { View, Text, StyleSheet, SafeAreaView } from 'react-native';
-import {Button, Card, Title, Paragraph, TextInput} from 'react-native-paper';
-import { AsyncStorage } from 'react-native';
-import { getRedirectUrl, useAuthRequest, makeRedirectUri } from 'expo-auth-session';
+import { View, Text, StyleSheet } from 'react-native';
+import {Button, Card, TextInput} from 'react-native-paper';
+import { makeRedirectUri } from 'expo-auth-session';
 import firebase from "../shared/firebase.js"
-makeRedirectUri()
+makeRedirectUri();
 
 
+const db = firebase.firestore();
 
-const db = firebase.firestore()
-
-const HomeScreen = ({navigation}) => {
+const AddFriendSearch = ({navigation}) => {
   const AddFriend = (friend) => {
     db.collection('friends').add( {
       name: friend
     }).then(
       setAdded(true)
     )
-  }
-  const [friend, setFriend] = React.useState("")
+  };
+  const [friend, setFriend] = React.useState("");
   //added tells us if they have added a friend
-  const [added, setAdded] = React.useState(false)
+  const [added, setAdded] = React.useState(false);
+
   return (
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
@@ -56,4 +55,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default HomeScreen;
+export default AddFriendSearch;

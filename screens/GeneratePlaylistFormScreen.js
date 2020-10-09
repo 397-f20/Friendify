@@ -1,16 +1,52 @@
-import React from 'react';
-import getTokens from '../spotifyAuth/getAccessToken';
-import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
 
+import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
+import firebase from "../shared/firebase.js";
+
+
+const db = firebase.firestore();
 
 const GeneratePlaylistFormScreen = ({navigation}) => {
-  getTokens()
+  const [friends, setFriends] = useState([]);
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    db.collection('friends').get().then(querySnapshot => {
+      let newfriends = []
+      querySnapshot.forEach(doc => {
+        let newfriend = doc.data()
+        newfriends.push(newfriend.name)})
+      console.log(newfriends)
+      console.log(Object.values(newfriends))
+      setFriends(Object.values(newfriends))
+    })
+  }, []);
+
+  if (friends.length !== 0) {
+    generatePlaylists();
+  }
+
+  const generateFriendsPlaylists = () => {
+    const temp = [];
+    friends.forEach(friend => {
+      const [playlists, setPlaylists] = useState(false)
+    useEffect(() => {
+        GetUserPlaylists(name).then((value) => {
+        console.log(name)
+        console.log(value)
+        setPlaylists(value)
+        }
+    );},[])
+    if(!playlists){
+        return false
+    }
+    })
+  };
   
   return (
-    
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-      <Button title='Hello'/> 
+      <Button title='Hello'/>
       </View>
     </SafeAreaView>
   );
