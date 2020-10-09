@@ -1,9 +1,10 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {useFocusEffect} from '@react-navigation/native';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
-import firebase from "../shared/firebase.js"
+import firebase from "../shared/firebase.js";
+import HomeScreen from "./HomeScreen.js"
 
 
 const db = firebase.firestore()
@@ -11,7 +12,7 @@ const db = firebase.firestore()
 const FriendsScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
     
-    useFocusEffect(() => {
+    useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
         let newfriends = []
         querySnapshot.forEach(doc =>{
@@ -24,9 +25,10 @@ const FriendsScreen = ({navigation}) => {
     }, []);
 
     return (
-      <SafeAreaView style={styles.container}>         
+      <SafeAreaView style={styles.container}>        
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>Friends</Title>
+                  <HomeScreen/> 
               </View>
               <ScrollView style={styles.scroll}>
                 <View>
@@ -45,7 +47,6 @@ const styles = StyleSheet.create({
     titleContainer: {
         width: '80%',
         textAlign: 'left',
-        marginBottom: 30,
     },
     container: {
       flex: 1,

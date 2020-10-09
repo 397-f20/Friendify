@@ -1,13 +1,16 @@
 import React from 'react';
-
+import getTokens from '../spotifyAuth/getAccessToken';
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 
+
 const GeneratePlaylistFormScreen = ({navigation}) => {
+  getTokens()
   
   return (
+    
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <Button title='Hello'/>
+      <Button title='Hello'/> 
       </View>
     </SafeAreaView>
   );
