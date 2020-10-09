@@ -10,22 +10,23 @@ const db = firebase.firestore();
 
 const FriendsScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
+    const [newFriend, setNewFriend] = useState(false)
 
     useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
         let newfriends = []
         querySnapshot.forEach(doc =>{
           let newfriend = doc.data()
-          newfriends.push(newfriend.name)})
+          newfriends.push(newfriend.displayname)})
         setFriends(Object.values(newfriends))
       })
-    }, []);
+    }, [newFriend]);
 
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>Friends</Title>
-                  <AddFriendSearch />
+                  <AddFriendSearch setNewFriend={setNewFriend} />
               </View>
               <ScrollView style={styles.scroll}>
                 <View>

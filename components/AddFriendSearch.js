@@ -3,17 +3,23 @@ import { View, Text, StyleSheet } from 'react-native';
 import {Button, Card, TextInput} from 'react-native-paper';
 import { makeRedirectUri } from 'expo-auth-session';
 import firebase from "../shared/firebase.js"
+import GetUserName from  "../spotifyQ/GetUserName.js";
 makeRedirectUri();
 
 
 const db = firebase.firestore();
 
-const AddFriendSearch = ({navigation}) => {
-  const AddFriend = (friend) => {
+const AddFriendSearch = ({setNewFriend}) => {
+  const AddFriend = async (friend) => {
+    const displayname = await GetUserName(friend)
+    console.log(displayname)
     db.collection('friends').add( {
-      name: friend
-    }).then(
+      name: friend,
+      displayname: displayname,
+    }).then(() => {
       setAdded(true)
+      setNewFriend(friend)
+    }
     )
   };
   const [friend, setFriend] = React.useState("");
