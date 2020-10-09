@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
         width: '80%',
         textAlign: 'left',
         marginBottom: 30,
+        marginTop: 30,
     },
     container: {
       flex: 1,
