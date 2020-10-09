@@ -10,8 +10,6 @@ const FriendPlaylists = ({name}) => {
     const [playlists, setPlaylists] = useState(false)
     useEffect(() => {
         GetUserPlaylists(name).then((value) => {
-        console.log(name)
-        console.log(value)
         setPlaylists(value)
         }
     );},[])

@@ -3,7 +3,7 @@ import firebase from "../shared/firebase.js";
 
 const db = firebase.firestore();
 
-const GetUserPlaylists = async(user) => {
+const GetUserPlaylistsIds = async(user) => {
 
     const access = await getTokens();
 
@@ -21,11 +21,11 @@ const GetUserPlaylists = async(user) => {
           });
         const repo = await response.json();
 
-        return repo.items.map((item) => item.name)
+        return repo.items.map((item) => item.href)
     } catch (err) {
         console.error(err);}
         
     return false
 }
 
-export default GetUserPlaylists
+export default GetUserPlaylistsIds

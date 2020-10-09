@@ -28,8 +28,6 @@ const getTokens = async () => {
       expires_in: expiresIn,
     } = responseJson;
     //i want to put responseJson in firebase
-
-    console.log(Object.values(responseJson))
     token = responseJson.access_token;
 
     const expirationTime = new Date().getTime() + expiresIn * 1000;
