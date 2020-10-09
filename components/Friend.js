@@ -4,18 +4,18 @@ import {StyleSheet, TouchableOpacity, Text, Image} from 'react-native';
 import {Avatar} from 'react-native-paper';
 
 
-const Friend = ({name, navigation}) => {
+const Friend = ({tuple, navigation}) => {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => navigation.navigate('Playlists', {name})}>
+            onPress={() => navigation.navigate('Playlists', {tuple})}>
             <Avatar.Image
                 size={30}
                 source={require('../assets/favicon.png')}
                 style={styles.icon}
             />
             <Text style={styles.text}>
-                {name}
+                {tuple ? tuple[1] : false}
             </Text>
             <Image
                 style={styles.arrow}

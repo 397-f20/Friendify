@@ -7,8 +7,8 @@ const FriendsList = ({friends, navigation}) => {
     return (
         <View>
         {
-            friends.map(friend => (
-                <Friend key={friend} name={friend} navigation={navigation} />
+            friends.map(tuple => (
+                <Friend key={tuple[1]} tuple={tuple} navigation={navigation} />
             ))
         }
         </View>

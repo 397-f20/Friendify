@@ -7,16 +7,16 @@ import FriendPlaylists from '../components/FriendPlaylists'
 
 
 const FriendPlaylistScreen = ({navigation, route}) => {
-    const name = route.params.name
+    const tuple = route.params.tuple
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-                <Title style={styles.title}>{`${name}'s Playlists`}</Title>
+                {(tuple) ? <Title style={styles.title}>{`${tuple[1]}'s Playlists`}</Title> : false}
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    <FriendPlaylists name={name} />
+                    {(tuple) ? <FriendPlaylists name={tuple[0]} /> : false}
                 </View>
             </ScrollView>
         </SafeAreaView>

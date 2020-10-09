@@ -17,7 +17,7 @@ const FriendsScreen = ({navigation}) => {
         let newfriends = []
         querySnapshot.forEach(doc =>{
           let newfriend = doc.data()
-          newfriends.push(newfriend.displayname)})
+          newfriends.push([newfriend.name, newfriend.displayname])})
         setFriends(Object.values(newfriends))
       })
     }, [newFriend]);

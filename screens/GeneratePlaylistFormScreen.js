@@ -35,7 +35,6 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
       tempPlaylists = tempPlaylists.concat(newtemp)
     }))
 
-    console.log(tempPlaylists)
     let tempSongs = []
     await Promise.all(tempPlaylists.map(async (id) => {
       const newtemp = await GetPlaylist(id)
@@ -43,7 +42,6 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
     }))
     
     let newPlaylist = getRandomSubarray(tempSongs, 15)
-    console.log(newPlaylist)
     setSongs(newPlaylist)
     
   };
@@ -61,7 +59,7 @@ const SongList = ({songs}) => {
   return(
     <ScrollView>
       <Text>Your new playlist!</Text>
-    {songs.map(song => <Song song={song} />)}
+    {songs.map(song => <Song key={song} song={song} />)}
     </ScrollView>
   )
 }

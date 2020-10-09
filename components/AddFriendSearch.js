@@ -12,7 +12,6 @@ const db = firebase.firestore();
 const AddFriendSearch = ({setNewFriend}) => {
   const AddFriend = async (friend) => {
     const displayname = await GetUserName(friend)
-    console.log(displayname)
     db.collection('friends').add( {
       name: friend,
       displayname: displayname,

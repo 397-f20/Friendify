@@ -19,8 +19,6 @@ const GetUserName = async(user) => {
         return repo.display_name
     } catch (err) {
         console.error(err);}
-    
-    console.log("test");
 }
 
 export default GetUserName
