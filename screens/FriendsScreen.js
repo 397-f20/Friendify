@@ -26,7 +26,9 @@ const FriendsScreen = ({navigation}) => {
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>Friends</Title>
-                  <AddFriendSearch setNewFriend={setNewFriend} />
+                  <View style={styles.add}>
+                    <AddFriendSearch setNewFriend={setNewFriend} />
+                  </View> 
               </View>
               <ScrollView style={styles.scroll}>
                 <View>
@@ -40,11 +42,12 @@ const FriendsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     title: {
       fontSize: 30,
-      marginTop: 50,
+      marginTop: 30,
+      marginBottom: 35,
     },
     titleContainer: {
         width: '80%',
-        textAlign: 'left',
+        textAlign: 'left'
     },
     container: {
       flex: 1,
@@ -55,6 +58,9 @@ const styles = StyleSheet.create({
     scroll: {
       width: '80%',
     },
+    add: {
+      height: 200,
+    }
 });
 
 export default FriendsScreen;

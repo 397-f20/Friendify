@@ -28,4 +28,4 @@ const GetUserPlaylists = async(user) => {
     return false
 }
 
-export default GetUserPlaylists
+export default GetUserPlaylists;

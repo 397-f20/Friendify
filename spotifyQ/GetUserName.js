@@ -21,4 +21,4 @@ const GetUserName = async(user) => {
         console.error(err);}
 }
 
-export default GetUserName
+export default GetUserName;

@@ -2,19 +2,18 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {Button, Card, TextInput} from 'react-native-paper';
 import { makeRedirectUri } from 'expo-auth-session';
-import firebase from "../shared/firebase.js"
+import firebase from "../shared/firebase.js";
 import GetUserName from  "../spotifyQ/GetUserName.js";
 makeRedirectUri();
-
 
 const db = firebase.firestore();
 
 const AddFriendSearch = ({setNewFriend}) => {
   const AddFriend = async (friend) => {
-    const displayname = await GetUserName(friend)
+    const displayname = await GetUserName(friend);
     db.collection('friends').add( {
       name: friend,
-      displayname: displayname,
+      displayname: displayname
     }).then(() => {
       setAdded(true)
       setNewFriend(friend)
@@ -29,9 +28,9 @@ const AddFriendSearch = ({setNewFriend}) => {
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
           <Card.Title
-            subtitle="Input your friends' Spotify User ID to add to your friend's list"></Card.Title>
+            subtitle="Add a friend to your Friend List"></Card.Title>
           <Card.Content>
-            <TextInput label="User ID" onChangeText={(value) => setFriend(value)}></TextInput>
+            <TextInput label="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
             {(added) ? <Text>Added {friend}!</Text> : false}
           </Card.Content>
           <Card.Actions>
@@ -47,16 +46,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    textAlign: 'left',
+    textAlign: 'left'
   },
   cardContainer: {
     flex: 1, 
     marginBottom: 50,
-    width: '80%',
+    width: '100%',
     justifyContent: 'center',
   },
   card: {
-    width: '100%',
+    width: '100%'
   }
 });
 

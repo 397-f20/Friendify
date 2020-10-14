@@ -24,4 +24,4 @@ const GetPlaylist = async(playlistHref) => {
         console.error(err);}
 }
 
-export default GetPlaylist
+export default GetPlaylist;

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import { View, Image, StyleSheet, SafeAreaView, Text, TouchableOpacity } from 'react-native';
+import {Button, Card, TextInput} from 'react-native-paper';
 import firebase from "../shared/firebase.js";
 import GetPlaylist from '../spotifyQ/GetPlaylist.js';
 import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds"
@@ -33,16 +34,16 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
     await Promise.all(newfriends.map(async (friend) => {
       const newtemp = await GetUserPlaylistsIds(friend)
       tempPlaylists = tempPlaylists.concat(newtemp)
-    }))
+    }));
 
-    let tempSongs = []
+    let tempSongs = [];
     await Promise.all(tempPlaylists.map(async (id) => {
       const newtemp = await GetPlaylist(id)
       tempSongs = tempSongs.concat(newtemp)
-    }))
+    }));
     
-    let newPlaylist = getRandomSubarray(tempSongs, 15)
-    setSongs(newPlaylist)
+    let newPlaylist = getRandomSubarray(tempSongs, 15);
+    setSongs(newPlaylist);
     
   };
 
@@ -56,11 +57,33 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
 };
 
 const SongList = ({songs}) => {
+  const [playlistName, setPlaylistName] = useState("");
+  const savePlaylist = ({songs, playlistName}) => {
+    console.log(playlistName);
+    db.collection('Playlists').add({
+      playlistName: playlistName,
+      songs: songs
+    })
+  }; 
+ 
   return(
-    <ScrollView>
-      <Text>Your new playlist!</Text>
-    {songs.map(song => <Song key={song} song={song} />)}
-    </ScrollView>
+    <View style={styles.save}>
+            <View style={styles.cardCon}>
+        <Card style={styles.card}>
+          <Card.Content>
+            <TextInput label="New Playlist Name"
+            onChangeText={(value) => setPlaylistName(value)} ></TextInput>
+          </Card.Content>
+          <Card.Actions>
+            <Button onPress={() => savePlaylist(songs, playlistName)}>Save Playlist</Button>
+            <Text>{playlistName}</Text>
+          </Card.Actions>
+        </Card>
+      </View>
+      <ScrollView>
+      {songs.map(song => <Song key={song} song={song} />)}
+      </ScrollView>
+    </View>
   )
 }
 
@@ -84,6 +107,11 @@ const Song = ({song}) => {
   )
 }
 const styles = StyleSheet.create({
+  save: {
+    height: 300,
+    justifyContent: 'flex-start',
+    flex: 1,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
@@ -118,7 +146,12 @@ icon: {
 },
 arrow: {
     marginLeft: 'auto',
-}
+},
+cardCon: {
+  marginBottom: 20,
+  width: '100%',
+  justifyContent: 'center',
+},
 });
 
 export default GeneratePlaylistFormScreen;
