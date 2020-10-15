@@ -1,7 +1,6 @@
 import React from 'react';
 
 import MyPlaylists from '../components/MyPlaylists';
-import Banner from '../components/Banner';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 
@@ -11,12 +10,11 @@ const MyPlaylistsScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={styles.container}>
-          <Banner navigation={navigation} />
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>My Playlists</Title>
               </View>
               <ScrollView style={styles.scroll}>
-                  <MyPlaylists playlists={playlists} />
+                  <MyPlaylists playlists={playlists} navigation={navigation} />
               </ScrollView>
         </SafeAreaView>
     );
@@ -30,6 +28,7 @@ const styles = StyleSheet.create({
         width: '80%',
         textAlign: 'left',
         marginBottom: 30,
+        marginTop: 30,
     },
     container: {
       flex: 1,

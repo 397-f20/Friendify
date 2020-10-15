@@ -3,10 +3,10 @@ import React from 'react';
 import MyPlaylistButton from './MyPlaylistButton';
 
 
-const MyPlaylists = ({playlists}) => {
+const MyPlaylists = ({playlists, navigation}) => {
     return (
         playlists.map(playlist => (
-            <MyPlaylistButton key={`${name}, ${playlist}`} playlist={playlist} />
+            <MyPlaylistButton key={`${playlist}, ${playlist}`} playlist={playlist} />
         ))
     );
 };

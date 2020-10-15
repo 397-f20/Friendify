@@ -7,13 +7,14 @@ import FriendPlaylistScreen from '../screens/FriendPlaylistScreen';
 
 const Stack = createStackNavigator();
 
-const FriendPlaylistNavigator = () => {
+const FriendsStackNavigator = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name='Friends' component={FriendsScreen} />
-            <Stack.Screen name='Playlists' component={FriendPlaylistScreen} />
+            <Stack.Screen name='Friends' component={FriendsScreen} options={{title: '' }}/>
+            <Stack.Screen name='Playlists' component={FriendPlaylistScreen} options={{title: ''}}/>
         </Stack.Navigator>
     )
 }
 
-export default FriendPlaylistNavigator;
+
+export default FriendsStackNavigator;

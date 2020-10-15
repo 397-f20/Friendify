@@ -4,22 +4,23 @@ import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
 
 
+
+
 const FriendPlaylistScreen = ({navigation, route}) => {
-    name = route.params.name;
-    const playlists = ['Rock', 'Pop', 'Chill', 'Party'];
+    const tuple = route.params.tuple
 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-                <Title style={styles.title}>{`${name}'s Playlists`}</Title>
+                {(tuple) ? <Title style={styles.title}>{`${tuple[1]}'s Playlists`}</Title> : false}
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    <FriendPlaylists playlists={playlists} />
+                    {(tuple) ? <FriendPlaylists name={tuple[0]} /> : false}
                 </View>
             </ScrollView>
         </SafeAreaView>
-    )
+    );
 };
 
 const styles = StyleSheet.create({
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     titleContainer: {
         width: '80%',
         textAlign: 'left',
-        marginBottom: 30,
+        marginTop: 30,
     },
     container: {
       flex: 1,
