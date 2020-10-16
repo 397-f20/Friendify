@@ -7,8 +7,15 @@ const FriendsList = ({friends, navigation}) => {
     return (
         <View>
         {
-            friends.map(tuple => (
-                <Friend key={tuple[1]} tuple={tuple} navigation={navigation} />
+            friends.sort(function(a,b){
+                const al = a.displayName.toLowerCase();
+                const bl = b.displayName.toLowerCase();
+                if(al < bl) { return -1; }
+                if(al > bl) { return 1; }
+                return 0;
+            })
+            .map(friend => (
+                <Friend key={friend.id} friend={friend} navigation={navigation} />
             ))
         }
         </View>

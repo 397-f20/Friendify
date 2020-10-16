@@ -75,7 +75,6 @@ const SongList = ({songs}) => {
           </Card.Content>
           <Card.Actions>
             <Button onPress={() => savePlaylist(songs, playlistName)}>Save Playlist</Button>
-            <Text>{playlistName}</Text>
           </Card.Actions>
         </Card>
       </View>

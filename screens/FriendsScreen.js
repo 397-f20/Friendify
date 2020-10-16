@@ -14,12 +14,17 @@ const FriendsScreen = ({navigation}) => {
 
     useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
-        let newfriends = []
+        let newfriends = [];
         querySnapshot.forEach(doc =>{
-          let newfriend = doc.data()
-          newfriends.push([newfriend.name, newfriend.displayname])})
-        setFriends(Object.values(newfriends))
-      })
+          let newfriend = doc.data();
+          newfriends.push({
+            id: doc.id,
+            name: newfriend.name,
+            displayName: newfriend.displayname,
+          })
+        });
+        setFriends(Object.values(newfriends));
+      });
     }, [newFriend]);
 
     return (
