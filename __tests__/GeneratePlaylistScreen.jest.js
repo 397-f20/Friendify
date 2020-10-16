@@ -1,15 +1,17 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import App from '../App';
+import {cleanup, fireEvent, render} from '@testing-library/react';
+import FriendScreen from '../screens/FriendsScreen';
+import { shallow } from 'enzyme';
 
-jest.useFakeTimers()
+afterEach(cleanup);
 
-describe('<App />', () => {
+describe('<FriendScreen />', () => {
+  console.log("here")
   jest.useFakeTimers();
   it('has 1 child', async () => {
-    console.log("here")
-    const tree = renderer.create(<App />).toJSON();
+    const tree = render(
+      <FriendScreen />
+    );
     console.log(tree)
-    expect(tree.children.length).toBe(1);
   });
 });
