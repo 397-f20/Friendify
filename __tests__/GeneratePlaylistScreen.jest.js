@@ -1,17 +1,18 @@
 import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
-import FriendScreen from '../screens/FriendsScreen';
+import App from '../App';
 import { shallow } from 'enzyme';
 
 afterEach(cleanup);
 
-describe('<FriendScreen />', () => {
+describe('<App />', () => {
   console.log("here")
   jest.useFakeTimers();
-  it('has 1 child', async () => {
-    const tree = render(
-      <FriendScreen />
+  it('Generate Button Test', async () => {
+    const screen = render(
+      <App />
     );
-    console.log(tree)
+    fireEvent.click(screen.getByText('Generate Playlist'))
+
   });
 });
