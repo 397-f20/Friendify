@@ -7,7 +7,9 @@ jest.useFakeTimers()
 describe('<App />', () => {
   jest.useFakeTimers();
   it('has 1 child', async () => {
+    console.log("here")
     const tree = renderer.create(<App />).toJSON();
+    console.log(tree)
     expect(tree.children.length).toBe(1);
   });
 });
