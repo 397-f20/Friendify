@@ -1,12 +1,28 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
 import MyPlaylists from '../components/MyPlaylists';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
+import firebase from "../shared/firebase.js";
 
+const db = firebase.firestore();
 
 const MyPlaylistsScreen = ({navigation}) => {
-    const playlists = ['Bob\'s Rock Playlist', 'Pop Mix', 'David\'s Chill and Party', 'Adam\'s Mix'];
+    const [playlists, setPlaylists] = useState([]);
+    useEffect(() => {
+      db.collection('Playlists').get().then(querySnapshot => {
+        let playlistList = [];
+        querySnapshot.forEach(doc =>{
+          let playlist = doc.data();
+          playlistList.push(
+            {
+              id: doc.id,
+              name: playlist.playlistName,
+              songs: playlist.songs
+            })
+        });
+        setPlaylists(Object.values(playlistList));
+        })
+    }, [playlists]);
 
     return (
         <SafeAreaView style={styles.container}>
