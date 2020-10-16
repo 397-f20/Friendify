@@ -7,7 +7,7 @@ const GeneratePlaylistScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <Button title='Generate Playlist' onPress={() => navigation.navigate('GeneratePlaylistForm')}/>
+        <Button title='Henerate Playlist' onPress={() => navigation.navigate('GeneratePlaylistForm')}/>
       </View>
     </SafeAreaView>
   );
