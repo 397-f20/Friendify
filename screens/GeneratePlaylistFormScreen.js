@@ -57,14 +57,13 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
 };
 
 const SongList = ({songs}) => {
-  const [playlistName, setPlaylistName] = useState("");
-  const savePlaylist = ({songs, playlistName}) => {
-    console.log(playlistName);
+  const savePlaylist = (songs, name) => {
     db.collection('Playlists').add({
-      playlistName: playlistName,
-      songs: songs
+      playlistName: name,
+      songs: songs,
     })
   }; 
+  const [playlistName, setPlaylistName] = React.useState("");
  
   return(
     <View style={styles.save}>
