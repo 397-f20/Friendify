@@ -14,15 +14,25 @@ const Song = ({song}) => {
     <Text style={styles.text}>
         {song}
     </Text>
-    <Image
-        style={styles.arrow}
-        source={require('../CSSExports/Carrot_s.png')}
-    />
+    <Text style={styles.text}>
+        {song}
+    </Text>
   </TouchableOpacity>
     )
 };
 
   const styles = StyleSheet.create({
+    songContainer: {
+      flex: 1,
+      backgroundColor: '#F4F4F4',
+      flexDirection: 'row',
+      borderRadius: 20,
+      height: 80,
+      width: '100%',
+      marginVertical: 5,
+      alignItems: 'center',
+      padding: 10,
+  },
     cardContainer: {
       flex: 1, 
       width: '80%',

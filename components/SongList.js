@@ -26,7 +26,7 @@ const SongList = ({songs}) => {
           </Card>
         </View>
         <ScrollView>
-        {songs.map(song => <Song key={song} song={song} />)}
+          {songs.map(song => <Song key={song} song={song} />)}
         </ScrollView>
       </View>
     )
