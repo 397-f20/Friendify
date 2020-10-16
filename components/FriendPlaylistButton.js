@@ -13,7 +13,7 @@ const FriendPlaylistButton = ({playlist}) => {
                 style={styles.icon}
             />
             <Text style={styles.text}>
-                {playlist}
+                {playlist.name}
             </Text>
         </TouchableOpacity>
     );

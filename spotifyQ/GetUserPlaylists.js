@@ -12,7 +12,7 @@ const GetUserPlaylists = async(user) => {
     }
     
     try {
-       // users/{user_id}/playlists 
+        playlists=[];
         const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists/`, {
             method: 'GET',
             headers: {
@@ -20,8 +20,15 @@ const GetUserPlaylists = async(user) => {
             }
           });
         const repo = await response.json();
-
-        return repo.items.map((item) => item.name)
+        repo.items.map((playlist) => {
+          playlists.push({
+            name: playlist.name,
+            songs: playlist.tracks,
+            images: playlist.images,
+            id: playlist.id
+          });
+        })
+        return playlists;
     } catch (err) {
         console.error(err);}
         
