@@ -1,7 +1,4 @@
 import getTokens from "../spotifyAuth/getAccessToken";
-import firebase from "../shared/firebase.js";
-
-const db = firebase.firestore();
 
 const GetPlaylist = async(playlistHref) => {
 
@@ -20,15 +17,25 @@ const GetPlaylist = async(playlistHref) => {
             }
           });
         const repo = await response.json();
-        if (typeof repo === 'undefined' || repo.items === 'undefined') {
+        if (typeof repo === 'undefined' || typeof repo.items === 'undefined') {
           return [];
         }
         repo.items.map((item) => {
-          if (!(typeof item === 'undefined')) {
-            tracks.push(item);
+          if (typeof item !== 'undefined' && typeof item.track !== 'undefined') {
+            if (item.track.name === null) {
+              console.log("null");
+            } else {
+              tracks.push({
+                "name": item.track.name,
+                "id": item.track.id,
+                "artists": item.track.artists,
+                "images": item.track.album.images,
+            })
+            }
+            
           }
         })
-        console.log(tracks.length);
+        console.log(tracks);
         return tracks;
     } catch (err) {
         console.error(err);

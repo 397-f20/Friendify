@@ -20,17 +20,18 @@ const GetUserPlaylists = async(user) => {
             }
           });
         const repo = await response.json();
-        if (typeof repo === 'undefined') {
+        if (typeof repo === 'undefined' || typeof repo.items === 'undefined') {
           return [];
         };
         repo.items.map((playlist) => {
-          if(playlist) {
+          if (typeof playlist !== 'undefined') {
             playlists.push({
               name: playlist.name,
               songs: playlist.tracks,
               id: playlist.id
-            });
-          } 
+            }); 
+          }
+            
         })
         return playlists;
     } catch (err) {

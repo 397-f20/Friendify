@@ -23,7 +23,7 @@ const FriendsScreen = ({navigation}) => {
             displayName: newfriend.displayname,
           })
         });
-        setFriends(Object.values(newfriends));
+        setFriends(newfriends);
       });
     }, [newFriend]);
 

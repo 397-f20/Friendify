@@ -1,43 +1,45 @@
 import React from 'react';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
-import Song from '../components/Song';
+import SongList from '../components/SongList';
 
 const PlaylistTracksScreen = ({navigation, route}) => {
-    const playlist = route.params.playlist;
-    console.log(playlist.songs);
-
+    const playlist = route.params.play;
+    const playlistName = route.params.playlistName;
+    console.log(playlist);
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-                {(playlist) ? <Title style={styles.title}>{playlist.name}</Title> : false}
+                {(playlist) ? <Title style={styles.title}>{playlistName}</Title> : false}
             </View>
-            <ScrollView style={styles.scroll}>
-                {playlist.songs.map(song => <Song key={song} song={song} />)}
-            </ScrollView>
+            <View style={styles.cardContainer}>
+                <SongList songs={playlist}/>
+            </View>
         </SafeAreaView>
     );
 };
 
 const styles = StyleSheet.create({
     title: {
-      fontSize: 30,
-      marginBottom: 30,
-    },
-    titleContainer: {
+        fontSize: 30,
+      },
+      titleContainer: {
+          width: '80%',
+          textAlign: 'left',
+          marginBottom: 30,
+          marginTop: 30,
+      },
+      cardContainer: {
+        flex: 1, 
         width: '80%',
+        justifyContent: 'center',
+      },
+      container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
         textAlign: 'left',
-        marginTop: 30,
-    },
-    container: {
-      flex: 1,
-      backgroundColor: '#fff',
-      alignItems: 'center',
-      textAlign: 'left',
-    },
-    scroll: {
-      width: '80%',
-    }
+      },
 });
 
 export default PlaylistTracksScreen;

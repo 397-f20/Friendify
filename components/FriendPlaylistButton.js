@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
+import GetPlaylist from '../spotifyQ/GetPlaylist';
 
+const FriendPlaylistButton = ({navigation, playlist}) => {
+    const [play, setPlay] = useState(false);
+    const playlistName = playlist.name;
+    useEffect(() => {
+        const href = playlist.songs.href.replace("/tracks", "");;
+        GetPlaylist(href).then((val) => {
+            setPlay(val);
+        })
+    },[]);
 
-const FriendPlaylistButton = ({playlist}) => {
+    if(!play) {
+        return false;
+    }
+
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container}
+            onPress={() => navigation.navigate('Playlist Tracks', {play, playlistName})}>
             <Avatar.Image
                 size={50}
                 source={require('../assets/favicon.png')}

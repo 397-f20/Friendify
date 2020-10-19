@@ -7,21 +7,22 @@ const Song = ({song}) => {
       var res = artists.map(a => a.name);
       return res.join(", ");
     };
-    
+    const url = song.images[0].url;
+
     return(
     <TouchableOpacity
     style={styles.songContainer}>
     <Avatar.Image
         size={30}
-        source={require('../assets/favicon.png')}
+        source={{uri: url}}
         style={styles.icon}
     />
     <View style={styles.textContainer}>
       <Text style={styles.text}>
-          {song.track.name}
+          {song.name}
       </Text>
       <Text style={styles.artist}>
-          {formatArtists(song.track.artists)}
+          {formatArtists(song.artists)}
       </Text>
     </View> 
   </TouchableOpacity>

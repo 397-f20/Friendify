@@ -6,9 +6,12 @@ import GetPlaylist from '../spotifyQ/GetPlaylist.js';
 import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds";
 import getRandomSubarray from "../utils/getRandomSubarray";
 import SongList from "../components/SongList";
+import {Button, Card, TextInput} from 'react-native-paper';
 
 const GeneratePlaylistFormScreen = ({navigation}) => {
   const [songs, setSongs] = useState([]);
+  const [playlistName, setPlaylistName] = React.useState("");
+  const db = firebase.firestore();
 
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
@@ -23,11 +26,19 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
       tempSongs = tempSongs.concat(newtemp)
     }));
     let newPlaylist = getRandomSubarray(tempSongs, 15);
+
+    //console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
+  const savePlaylist = (songs, name) => {
+    db.collection('Playlists').add({
+      playlistName: name,
+      songs: songs,
+    })
+  }; 
+
   useEffect(() => {
-    const db = firebase.firestore();
     db.collection('friends').get().then(querySnapshot => {
       let newfriends = [];
       querySnapshot.forEach(doc => {
@@ -40,6 +51,17 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={styles.container}>
+        <View style={styles.cardCon}>
+          <Card style={styles.card}>
+            <Card.Content>
+              <TextInput label="New Playlist Name"
+              onChangeText={(value) => setPlaylistName(value)} ></TextInput>
+            </Card.Content>
+            <Card.Actions>
+              <Button onPress={() => savePlaylist(songs, playlistName)}>Save Playlist</Button>
+            </Card.Actions>
+          </Card>
+        </View>
       <View style={styles.cardContainer}>
       {songs.length !== 0 ? <SongList songs={songs}/> : <Text>Generating...</Text>}
       </View>
@@ -60,7 +82,15 @@ const styles = StyleSheet.create({
     flex: 1, 
     width: '80%',
     justifyContent: 'center',
-  }
+  },
+  card: {
+    width: '100%',
+  },
+  cardCon: {
+    marginBottom: 20,
+    width: '100%',
+    justifyContent: 'center',
+  },
   });
 
 export default GeneratePlaylistFormScreen;

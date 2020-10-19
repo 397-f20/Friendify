@@ -5,7 +5,6 @@ import FriendPlaylists from '../components/FriendPlaylists'
 
 const FriendPlaylistScreen = ({navigation, route}) => {
     const friend = route.params.friend;
-
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
@@ -13,7 +12,7 @@ const FriendPlaylistScreen = ({navigation, route}) => {
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    {(friend) ? <FriendPlaylists name={friend.displayName} /> : false}
+                    {(friend) ? <FriendPlaylists name={friend.name} navigation={navigation}/> : false}
                 </View>
             </ScrollView>
         </SafeAreaView>
