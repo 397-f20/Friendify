@@ -12,16 +12,27 @@ const GetPlaylist = async(playlistHref) => {
     }
     
     try {
+        let tracks=[];
         const response = await fetch(`${playlistHref}/tracks?market=US`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${access}`
             }
           });
-        const repo = await response.json();  
-        return repo.items.map((item) => item.track.name)
+        const repo = await response.json();
+        if (typeof repo === 'undefined' || repo.items === 'undefined') {
+          return [];
+        }
+        repo.items.map((item) => {
+          if (!(typeof item === 'undefined')) {
+            tracks.push(item);
+          }
+        })
+        console.log(tracks.length);
+        return tracks;
     } catch (err) {
-        console.error(err);}
+        console.error(err);
+      }
 }
 
 export default GetPlaylist;

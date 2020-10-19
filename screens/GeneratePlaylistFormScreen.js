@@ -7,42 +7,36 @@ import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds";
 import getRandomSubarray from "../utils/getRandomSubarray";
 import SongList from "../components/SongList";
 
-const db = firebase.firestore();
-
 const GeneratePlaylistFormScreen = ({navigation}) => {
-  const [friends, setFriends] = useState([]);
   const [songs, setSongs] = useState([]);
-
-
-  useEffect(() => {
-    db.collection('friends').get().then(querySnapshot => {
-      let newfriends = []
-      querySnapshot.forEach(doc => {
-        let newfriend = doc.data()
-        newfriends.push(newfriend.name)})
-      setFriends(Object.values(newfriends))
-      getFriendsPlaylists(newfriends);
-    })
-  }, []);
 
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
-
     await Promise.all(newfriends.map(async (friend) => {
-      const newtemp = await GetUserPlaylistsIds(friend)
-      tempPlaylists = tempPlaylists.concat(newtemp)
+      const newtemp = await GetUserPlaylistsIds(friend);
+      tempPlaylists = tempPlaylists.concat(newtemp);
     }));
 
     let tempSongs = [];
     await Promise.all(tempPlaylists.map(async (id) => {
-      const newtemp = await GetPlaylist(id)
+      const newtemp = await GetPlaylist(id) 
       tempSongs = tempSongs.concat(newtemp)
     }));
-    
     let newPlaylist = getRandomSubarray(tempSongs, 15);
     setSongs(newPlaylist);
-    
   };
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    db.collection('friends').get().then(querySnapshot => {
+      let newfriends = [];
+      querySnapshot.forEach(doc => {
+        let newfriend = doc.data();
+        newfriends.push(newfriend.name);
+      });
+      getFriendsPlaylists(newfriends);
+    })
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>

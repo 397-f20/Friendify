@@ -3,9 +3,6 @@ import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
 
-
-
-
 const FriendPlaylistScreen = ({navigation, route}) => {
     const friend = route.params.friend;
 

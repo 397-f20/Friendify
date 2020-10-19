@@ -16,7 +16,7 @@ const GetUserName = async(user) => {
             }
           });
         const repo = await response.json();  
-        return repo.display_name
+        return repo.display_name;
     } catch (err) {
         console.error(err);}
 }

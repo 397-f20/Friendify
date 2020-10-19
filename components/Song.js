@@ -1,8 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, Text, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, Text, StyleSheet, View} from 'react-native';
 import {Avatar} from 'react-native-paper';
 
 const Song = ({song}) => {
+    const formatArtists = (artists) => {
+      var res = artists.map(a => a.name);
+      return res.join(", ");
+    };
+    
     return(
     <TouchableOpacity
     style={styles.songContainer}>
@@ -11,17 +16,23 @@ const Song = ({song}) => {
         source={require('../assets/favicon.png')}
         style={styles.icon}
     />
-    <Text style={styles.text}>
-        {song}
-    </Text>
-    <Text style={styles.text}>
-        {song}
-    </Text>
+    <View style={styles.textContainer}>
+      <Text style={styles.text}>
+          {song.track.name}
+      </Text>
+      <Text style={styles.artist}>
+          {formatArtists(song.track.artists)}
+      </Text>
+    </View> 
   </TouchableOpacity>
     )
 };
 
   const styles = StyleSheet.create({
+    textContainer: {
+      flex: 1,
+      flexDirection: 'column',
+    },
     songContainer: {
       flex: 1,
       backgroundColor: '#F4F4F4',
@@ -41,6 +52,10 @@ const Song = ({song}) => {
     text: {
       color: '#707070',
       fontSize: 20,
+    },
+    artist: {
+      color: '#707070',
+      fontSize: 16,
     },
     icon: {
         marginRight: 30

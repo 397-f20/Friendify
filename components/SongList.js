@@ -11,7 +11,6 @@ const SongList = ({songs}) => {
       })
     }; 
     const [playlistName, setPlaylistName] = React.useState("");
-   
     return(
       <View style={styles.save}>
               <View style={styles.cardCon}>
@@ -26,7 +25,7 @@ const SongList = ({songs}) => {
           </Card>
         </View>
         <ScrollView>
-          {songs.map(song => <Song key={song} song={song} />)}
+          {songs.map(song => <Song key={song.track.id} song={song} />)}
         </ScrollView>
       </View>
     )
