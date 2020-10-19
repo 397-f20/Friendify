@@ -6,7 +6,6 @@ import SongList from '../components/SongList';
 const PlaylistTracksScreen = ({navigation, route}) => {
     const playlist = route.params.play;
     const playlistName = route.params.playlistName;
-    console.log(playlist);
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>

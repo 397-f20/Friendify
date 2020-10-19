@@ -3,6 +3,7 @@ import { View, ScrollView, StyleSheet } from 'react-native';
 import Song from './Song';
 
 const SongList = ({songs}) => {
+    //console.log(songs);
     return(
       <View style={styles.save}>
 

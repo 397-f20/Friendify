@@ -13,7 +13,7 @@ const Song = ({song}) => {
     <TouchableOpacity
     style={styles.songContainer}>
     <Avatar.Image
-        size={30}
+        size={40}
         source={{uri: url}}
         style={styles.icon}
     />
