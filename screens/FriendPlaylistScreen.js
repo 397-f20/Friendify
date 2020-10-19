@@ -3,20 +3,16 @@ import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
 
-
-
-
 const FriendPlaylistScreen = ({navigation, route}) => {
-    const tuple = route.params.tuple
-
+    const friend = route.params.friend;
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-                {(tuple) ? <Title style={styles.title}>{`${tuple[1]}'s Playlists`}</Title> : false}
+                {(friend) ? <Title style={styles.title}>{`${friend.displayName}'s Playlists`}</Title> : false}
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    {(tuple) ? <FriendPlaylists name={tuple[0]} /> : false}
+                    {(friend) ? <FriendPlaylists name={friend.name} navigation={navigation}/> : false}
                 </View>
             </ScrollView>
         </SafeAreaView>

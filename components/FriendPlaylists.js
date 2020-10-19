@@ -5,20 +5,22 @@ import GetUserPlaylists from '../spotifyQ/GetUserPlaylists';
 
 
 
-const FriendPlaylists = ({name}) => {
+const FriendPlaylists = ({navigation, name}) => {
 
     const [playlists, setPlaylists] = useState(false)
     useEffect(() => {
         GetUserPlaylists(name).then((value) => {
-        setPlaylists(value)
+            setPlaylists(value);
         }
-    );},[])
-    if(!playlists){
+    );
+    },[])
+    
+    if(!playlists) {
         return false
     }
     return (
         playlists.map(playlist => (
-            <FriendPlaylistButton key={`${name}, ${playlist}`} playlist={playlist} />
+            <FriendPlaylistButton key={playlist.id} playlist={playlist} navigation={navigation}/>
         ))
     );
 };

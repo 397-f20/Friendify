@@ -1,12 +1,13 @@
-function getRandomSubarray(arr, size) {
-    var shuffled = arr.slice(0), i = arr.length, min = i - size, temp, index;
+const getRandomSubarray = (arr, size) => {
+    var shuffled = arr.slice(0), i = arr.length, min = i - size;
     while (i-- > min) {
-        index = Math.floor((i + 1) * Math.random());
-        temp = shuffled[index];
+        var index = Math.floor((i + 1) * Math.random());
+        var temp = shuffled[index];
         shuffled[index] = shuffled[i];
         shuffled[i] = temp;
     }
     return shuffled.slice(min);
 }
+  
 
 export default getRandomSubarray;

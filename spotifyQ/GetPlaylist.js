@@ -1,7 +1,4 @@
 import getTokens from "../spotifyAuth/getAccessToken";
-import firebase from "../shared/firebase.js";
-
-const db = firebase.firestore();
 
 const GetPlaylist = async(playlistHref) => {
 
@@ -12,16 +9,37 @@ const GetPlaylist = async(playlistHref) => {
     }
     
     try {
+        let tracks=[];
         const response = await fetch(`${playlistHref}/tracks?market=US`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${access}`
             }
           });
-        const repo = await response.json();  
-        return repo.items.map((item) => item.track.name)
+        const repo = await response.json();
+        if (typeof repo === 'undefined' || typeof repo.items === 'undefined') {
+          return [];
+        }
+        repo.items.map((item) => {
+          if (typeof item !== 'undefined' && typeof item.track !== 'undefined') {
+            if (item.track.name === null) {
+              console.log("null");
+            } else {
+              tracks.push({
+                "name": item.track.name,
+                "id": item.track.id,
+                "artists": item.track.artists,
+                "images": item.track.album.images,
+            })
+            }
+            
+          }
+        })
+        console.log(tracks);
+        return tracks;
     } catch (err) {
-        console.error(err);}
+        console.error(err);
+      }
 }
 
-export default GetPlaylist
+export default GetPlaylist;

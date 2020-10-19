@@ -14,19 +14,26 @@ const FriendsScreen = ({navigation}) => {
 
     useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
-        let newfriends = []
+        let newfriends = [];
         querySnapshot.forEach(doc =>{
-          let newfriend = doc.data()
-          newfriends.push([newfriend.name, newfriend.displayname])})
-        setFriends(Object.values(newfriends))
-      })
+          let newfriend = doc.data();
+          newfriends.push({
+            id: doc.id,
+            name: newfriend.name,
+            displayName: newfriend.displayname,
+          })
+        });
+        setFriends(newfriends);
+      });
     }, [newFriend]);
 
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
                   <Title style={styles.title}>Friends</Title>
-                  <AddFriendSearch setNewFriend={setNewFriend} />
+                  <View style={styles.add}>
+                    <AddFriendSearch setNewFriend={setNewFriend} />
+                  </View> 
               </View>
               <ScrollView style={styles.scroll}>
                 <View>
@@ -40,11 +47,12 @@ const FriendsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
     title: {
       fontSize: 30,
-      marginTop: 50,
+      marginTop: 30,
+      marginBottom: 35,
     },
     titleContainer: {
         width: '80%',
-        textAlign: 'left',
+        textAlign: 'left'
     },
     container: {
       flex: 1,
@@ -55,6 +63,9 @@ const styles = StyleSheet.create({
     scroll: {
       width: '80%',
     },
+    add: {
+      height: 200,
+    }
 });
 
 export default FriendsScreen;

@@ -4,16 +4,20 @@ import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
 
 
-const MyPlaylistButton = ({playlist}) => {
+const MyPlaylistButton = ({playlist, navigation}) => {
+    const playlistName = playlist.name;
+    const play = playlist.songs;
+    //console.log(playlist.name, playlist.song);
     return (
-        <TouchableOpacity style={styles.container}>
+        <TouchableOpacity style={styles.container}
+            onPress={() => navigation.navigate('Playlist Tracks', {play, playlistName})}>
             <Avatar.Image
                 size={50}
                 source={require('../assets/favicon.png')}
                 style={styles.icon}
             />
             <Text style={styles.text}>
-                {playlist}
+                {playlistName}
             </Text>
         </TouchableOpacity>
     );

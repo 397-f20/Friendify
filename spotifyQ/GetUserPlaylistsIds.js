@@ -20,12 +20,20 @@ const GetUserPlaylistsIds = async(user) => {
             }
           });
         const repo = await response.json();
-
-        return repo.items.map((item) => item.href)
+        if (typeof repo === 'undefined' || typeof repo.items === 'undefined') {
+          return [];
+        };
+        let playlists = [];
+        repo.items.map((item) => {
+          if (!(typeof item === 'undefined')) {
+            playlists.push(item.href);
+          }
+        })
+        return playlists;
     } catch (err) {
         console.error(err);}
         
     return false
 }
 
-export default GetUserPlaylistsIds
+export default GetUserPlaylistsIds;

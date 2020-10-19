@@ -6,7 +6,7 @@ import MyPlaylistButton from './MyPlaylistButton';
 const MyPlaylists = ({playlists, navigation}) => {
     return (
         playlists.map(playlist => (
-            <MyPlaylistButton key={`${playlist}, ${playlist}`} playlist={playlist} />
+            <MyPlaylistButton key={playlist.id} playlist={playlist} navigation={navigation}/>
         ))
     );
 };
