@@ -27,7 +27,6 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
     }));
     let newPlaylist = getRandomSubarray(tempSongs, 15);
 
-    //console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
