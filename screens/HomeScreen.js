@@ -3,11 +3,11 @@ import React from 'react';
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 
 
-const GeneratePlaylistScreen = ({navigation}) => {
+const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <Button title='Generate Playlist' onPress={() => navigation.navigate('GeneratePlaylistForm')}/>
+        <Button title='Generate Playlist' onPress={() => navigation.navigate('GeneratedPlaylist')}/>
       </View>
     </SafeAreaView>
   );
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default GeneratePlaylistScreen;
+export default HomeScreen;

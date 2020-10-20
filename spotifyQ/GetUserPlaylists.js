@@ -4,7 +4,6 @@ import firebase from "../shared/firebase.js";
 const db = firebase.firestore();
 
 const GetUserPlaylists = async(user) => {
-
     const access = await getTokens();
 
     if (!access) {
@@ -12,7 +11,7 @@ const GetUserPlaylists = async(user) => {
     }
     
     try {
-        playlists=[];
+        let playlists=[];
         const response = await fetch(`https://api.spotify.com/v1/users/${user}/playlists/`, {
             method: 'GET',
             headers: {

@@ -7,7 +7,7 @@ import GetUserPlaylists from '../spotifyQ/GetUserPlaylists';
 
 const FriendPlaylists = ({navigation, name}) => {
 
-    const [playlists, setPlaylists] = useState(false)
+    const [playlists, setPlaylists] = useState([])
     useEffect(() => {
         GetUserPlaylists(name).then((value) => {
             setPlaylists(value);
@@ -15,7 +15,8 @@ const FriendPlaylists = ({navigation, name}) => {
     );
     },[])
     
-    if(!playlists) {
+    console.log(playlists)
+    if(playlists.length == 0) {
         return false
     }
     return (

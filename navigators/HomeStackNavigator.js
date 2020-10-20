@@ -1,8 +1,8 @@
 import React from 'react';
 
 import {createStackNavigator} from '@react-navigation/stack';
-import GeneratePlaylistScreen from '../screens/GeneratePlaylistScreen';
-import GeneratePlaylistFormScreen from '../screens/GeneratePlaylistFormScreen';
+import HomeScreen from '../screens/HomeScreen';
+import GeneratedPlaylistScreen from '../screens/GeneratedPlaylistScreen';
 
 
 const Stack = createStackNavigator();
@@ -10,8 +10,8 @@ const Stack = createStackNavigator();
 const HomeStackNavigator = () => {
     return (
         <Stack.Navigator>
-            <Stack.Screen name='GeneratePlaylist' component={GeneratePlaylistScreen} options={{ title:'' }}/>
-            <Stack.Screen name='GeneratePlaylistForm' component={GeneratePlaylistFormScreen} options={{ title:'' }}/>
+            <Stack.Screen name='Home' component={HomeScreen} options={{ title:'' }}/>
+            <Stack.Screen name='GeneratedPlaylist' component={GeneratedPlaylistScreen} options={{ title:'' }}/>
         </Stack.Navigator>
     )
 }
