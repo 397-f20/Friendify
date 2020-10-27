@@ -1,7 +1,5 @@
 import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
-import App from '../App';
-import { Item } from 'react-native-paper/lib/typescript/src/components/List/List';
 import AddFriendSearch from '../components/AddFriendSearch';
 import getTokens from "../spotifyAuth/getAccessToken";
 import * as admin from 'firebase-admin';
