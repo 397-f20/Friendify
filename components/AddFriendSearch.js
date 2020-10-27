@@ -30,7 +30,7 @@ const AddFriendSearch = ({setNewFriend}) => {
           <Card.Title
             subtitle="Add a friend to your Friend List"></Card.Title>
           <Card.Content>
-            <TextInput label="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
+            <TextInput placeholder="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
             {(added) ? <Text>Added {friend}!</Text> : false}
           </Card.Content>
           <Card.Actions>
