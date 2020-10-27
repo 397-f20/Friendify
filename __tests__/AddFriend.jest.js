@@ -2,16 +2,10 @@ import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
 import AddFriendSearch from '../components/AddFriendSearch';
 import getTokens from "../spotifyAuth/getAccessToken";
-import * as admin from 'firebase-admin';
+import {describe, expect, it} from '@jest/globals';
+import {mockFirebase, mockCollection} from 'firestore-jest-mock/mocks/firestore.js';
 
-const {
-    mockCollection,
-    mockAdd,
-  } = require('firestore-jest-mock/mocks/firestore');
-
-const { mockFirebase } = require('firestore-jest-mock');
-
-describe ('Add Friend Tests', () => {
+describe('Add Friend Tests', () => {
     mockFirebase({
         database: {
             friends: [{displayName: 'joanna', name: 'jo'}]
