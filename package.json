@@ -36,7 +36,8 @@
     "react-test-renderer": "^16.14.0"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "firestore-jest-mock": "^0.6.0"
   },
   "jest": {
     "preset": "jest-expo",
