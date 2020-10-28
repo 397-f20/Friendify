@@ -7,8 +7,14 @@ import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds";
 import getRandomSubarray from "../utils/getRandomSubarray";
 import SongList from "../components/SongList";
 import {Button, Card, TextInput} from 'react-native-paper';
+import FriendSelectScreen from './FriendSelectScreen.js';
+import FriendsList from '../components/FriendsList.js';
 
-const GeneratePlaylistFormScreen = ({navigation}) => {
+
+//We're getting a react warning with the textInput. maybe setting a value as undefined?
+const GeneratePlaylistFormScreen = ({navigation, route}) => {
+  const friends = route.params.friends
+  const chosenFriends = route.params.chosenFriends
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = React.useState("");
   const db = firebase.firestore();
@@ -16,7 +22,7 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
     await Promise.all(newfriends.map(async (friend) => {
-      const newtemp = await GetUserPlaylistsIds(friend);
+      const newtemp = await GetUserPlaylistsIds(friend.name);
       tempPlaylists = tempPlaylists.concat(newtemp);
     }));
 
@@ -26,7 +32,6 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
       tempSongs = tempSongs.concat(newtemp)
     }));
     let newPlaylist = getRandomSubarray(tempSongs, 15);
-
     setSongs(newPlaylist);
   };
 
@@ -38,14 +43,13 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
   }; 
 
   useEffect(() => {
-    db.collection('friends').get().then(querySnapshot => {
-      let newfriends = [];
-      querySnapshot.forEach(doc => {
-        let newfriend = doc.data();
-        newfriends.push(newfriend.name);
-      });
+      let newfriends = []
+      for (let i = 0; i < chosenFriends.length; i++){
+        if (chosenFriends[i]){
+          newfriends.push(friends[i])
+        }
+      }
       getFriendsPlaylists(newfriends);
-    })
   }, []);
 
   return (
@@ -54,6 +58,7 @@ const GeneratePlaylistFormScreen = ({navigation}) => {
           <Card style={styles.card}>
             <Card.Content>
               <TextInput label="New Playlist Name"
+                          placeholder="My Playlist"
               onChangeText={(value) => setPlaylistName(value)} ></TextInput>
             </Card.Content>
             <Card.Actions>

@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
-import FriendsList from '../components/FriendsList';
+import FriendSelector from '../components/FriendSelector';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
 
 
 const db = firebase.firestore();
 
-const FriendsScreen = ({navigation}) => {
+const FriendSelectScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
     const [newFriend, setNewFriend] = useState(false)
+    const [chosenFriends, setChosenFriends] = useState([]);
 
     useEffect(() => {
       db.collection('friends').get().then(querySnapshot => {
@@ -24,22 +25,27 @@ const FriendsScreen = ({navigation}) => {
           })
         });
         setFriends(newfriends);
+        let tempChosenFriends = []
+        for (let i = 0; i < newfriends.length; i++){
+          tempChosenFriends.push(false)
+        }
+        setChosenFriends(tempChosenFriends)
       });
     }, [newFriend]);
-
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
-                  <Title style={styles.title}>Friends</Title>
+                  <Title style={styles.title}>Choose some friends!</Title>
                   <View style={styles.add}>
                     <AddFriendSearch setNewFriend={setNewFriend} />
                   </View> 
               </View>
               <ScrollView style={styles.scroll}>
                 <View>
-                  <FriendsList friends={friends} navigation={navigation} />
+                  <FriendSelector friends={friends} navigation={navigation} chosenFriends={chosenFriends} setChosenFriends={setChosenFriends} />
                 </View>
               </ScrollView>
+              <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends})}></Button>
         </SafeAreaView>
     );
 };
@@ -67,4 +73,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default FriendsScreen;
+export default FriendSelectScreen;

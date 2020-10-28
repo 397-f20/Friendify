@@ -35,7 +35,6 @@ const GetPlaylist = async(playlistHref) => {
             
           }
         })
-        console.log(tracks);
         return tracks;
     } catch (err) {
         console.error(err);

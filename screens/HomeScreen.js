@@ -7,7 +7,7 @@ const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <Button title='Generate Playlist' onPress={() => navigation.navigate('GeneratedPlaylist')}/>
+        <Button title='Generate Playlist' onPress={() => navigation.navigate('FriendSelect')}/>
       </View>
     </SafeAreaView>
   );
