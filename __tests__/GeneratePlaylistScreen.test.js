@@ -1,6 +1,7 @@
 import React from 'react';
 import {cleanup, fireEvent, render} from '@testing-library/react';
 import App from '../App';
+import {describe, it} from '@jest/globals'
 import { shallow } from 'enzyme';
 
 afterEach(cleanup);
