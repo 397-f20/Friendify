@@ -1,13 +1,17 @@
 import React from 'react';
 
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <Button title='Generate Playlist' onPress={() => navigation.navigate('FriendSelect')}/>
+        <TouchableOpacity title='Generate Playlist' onPress={() => navigation.navigate('FriendSelect')}/>
+        <Button title="Logout" color="#448aff"
+          onPress={() => firebase.auth().signOut()}
+        />
       </View>
     </SafeAreaView>
   );
