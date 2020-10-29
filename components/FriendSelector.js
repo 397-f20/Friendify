@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-import {Checkbox} from 'react-native-paper';
+import {ScrollView, StyleSheet,  View, Text } from 'react-native';
+import {Chip, Avatar} from 'react-native-paper';
 
 //NOTE: chosenFriends is an array of booleans the same length as friends
 //  false corresponds to not selected, and true means selected
@@ -15,7 +15,7 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
     } else {
 
     return (
-        <View>
+        <ScrollView style={styles.scroll} contentContainerStyle={{alignItems: 'center', justifyContent: 'flex-start', flexDirection: 'row', }}>
         {
             friends.sort(function(a,b){
                 const al = a.displayName.toLowerCase();
@@ -25,22 +25,47 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
                 return 0;
             })
             .map((element, index) => (
-                <Checkbox.Item
+                <Chip style={styles.chip}
                 key={element.id}
-                label = {element.displayName}
-                status={chosenFriends[index] ? 'checked' : 'unchecked' }
+                avatar ={<Avatar.Image
+                    size={30}
+                    source={require('../assets/favicon.png')}
+                    style={styles.icon}
+                />}
+                selected={chosenFriends[index]}
                 onPress = {() => {
                     let tempChosen = [
                         ...chosenFriends
                     ]
                     tempChosen[index] = !chosenFriends[index]
                     setChosenFriends(tempChosen)
-                }}/>
+                }}>
+                    {element.displayName}
+                    </Chip>
             ))
             }
-        </View>
+        </ScrollView>
     );
     }
 };
+const styles = StyleSheet.create({
+    scroll:{
+        width: 500, 
+    },
+    chip: {
+        flex: 1,
+        marginVertical: 5,
+        alignItems: 'center',
+    },
+    text: {
+        fontSize: 20,
+    },
+    icon: {
+        marginRight: 30
+    },
+    arrow: {
+        marginLeft: 'auto',
+    },
+});
 
 export default FriendSelector;

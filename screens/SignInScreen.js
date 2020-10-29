@@ -5,6 +5,7 @@ import firebase from '../shared/firebase';
 import Form from '../components/Form';
 import App from '../App.js';
 
+const db = firebase.firestore()
 const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Please enter a valid email')
@@ -23,17 +24,20 @@ const validationSchema = Yup.object().shape({
 const SignInScreen = () => {
     const [signInError, setSignInError] = useState(''); 
     async function handleSubmit(values) {
-        console.log(values);
       const { email, password, confirm } = values;
       if (confirm) {
-        console.log(confirm)
-        console.log(email)
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(error => {
+        firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
+          console.log(value)
+          const id = value.user.uid
+          db.collection('users').doc(value.user.uid).set({
+            email: email
+          })
+        }
+        ).catch(error => {
             setSignInError(error.message);
           });
         return (<App />)
       } else {
-        console.log(confirm)
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
           });

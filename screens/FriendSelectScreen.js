@@ -40,11 +40,7 @@ const FriendSelectScreen = ({navigation}) => {
                     <AddFriendSearch setNewFriend={setNewFriend} />
                   </View> 
               </View>
-              <ScrollView style={styles.scroll}>
-                <View>
                   <FriendSelector friends={friends} navigation={navigation} chosenFriends={chosenFriends} setChosenFriends={setChosenFriends} />
-                </View>
-              </ScrollView>
               <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends})}></Button>
         </SafeAreaView>
     );
@@ -66,7 +62,7 @@ const styles = StyleSheet.create({
       textAlign: 'left',
     },
     scroll: {
-      width: '80%',
+      width: 100
     },
     add: {
       height: 200,

@@ -20,18 +20,18 @@ const App = () => {
 
   useEffect(() => {
     if (auth && auth.uid) {
-      const userRef = db.collection('users').doc(auth.uid);
-      userRef
+      const usersRef = db.collection('users');
+
+      usersRef
         .get()
         // this doesn't work yet
         .then((querySnapshot) => {
-            if (querySnapshot.empty) {
-              userRef.set({
-                email: auth.email
+              querySnapshot.docs.forEach((doc) => {
+                if (auth.uid === doc.id) {
+                  setUser(auth.uid)
+                  return
+                }
               })
-            } else {
-              console.log(querySnapshot.doc)
-            };
         });
     } else {
       setUser(null);
