@@ -27,10 +27,10 @@ const AddFriendSearch = ({setNewFriend}) => {
   return (
       <View style={styles.cardContainer}>
         <Card style={styles.card}>
-          <Card.Title
+          <Card.Title style={styles.cardTitle}
             subtitle="Add a friend to your Friend List"></Card.Title>
-          <Card.Content>
-            <TextInput label="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
+          <Card.Content style={styles.cardContent}>
+            <TextInput style={styles.textInput} placeholder="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
             {(added) ? <Text>Added {friend}!</Text> : false}
           </Card.Content>
           <Card.Actions>
@@ -45,17 +45,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
     textAlign: 'left'
   },
   cardContainer: {
     flex: 1, 
-    marginBottom: 50,
     width: '100%',
     justifyContent: 'center',
   },
   card: {
-    width: '100%'
+    width: '100%',
+  },
+  cardTitle : {
+    height:  100,
+    marginTop: -25,
+    marginBottom: -25,
+  },
+  carContent: {
+  },
+  textInput: {
   }
 });
 
