@@ -2,6 +2,7 @@ import React from 'react';
 
 import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import firebase from '../shared/firebase';
 
 
 const HomeScreen = ({navigation}) => {
