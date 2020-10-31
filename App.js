@@ -24,7 +24,6 @@ const App = () => {
 
       usersRef
         .get()
-        // this doesn't work yet
         .then((querySnapshot) => {
               querySnapshot.docs.forEach((doc) => {
                 if (auth.uid === doc.id) {

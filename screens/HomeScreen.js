@@ -1,18 +1,23 @@
 import React from 'react';
 
-import { View, Button, StyleSheet, SafeAreaView } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, Button, StyleSheet, SafeAreaView, TouchableOpacity, Text } from 'react-native';
 import firebase from '../shared/firebase';
 
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView>
       <View style={styles.cardContainer}>
-        <TouchableOpacity title='Generate Playlist' onPress={() => navigation.navigate('FriendSelect')}/>
-        <Button title="Logout" color="#448aff"
-          onPress={() => firebase.auth().signOut()}
-        />
+        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('FriendSelect')}>
+          <Text style={styles.text}>
+            Generate Playlist
+          </Text>
+        </TouchableOpacity>
+        <TouchableOpacity color="#448aff" onPress={() => firebase.auth().signOut()}>
+          <Text style={styles.text}>
+            Logout
+          </Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -21,9 +26,18 @@ const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F4F4F4',
+    flexDirection: 'row',
+    borderRadius: 20,
+    height: 80,
+    width: '100%',
+    marginVertical: 5,
     alignItems: 'center',
-    textAlign: 'left',
+    padding: 10,
+  },
+  text: {
+    color: '#707070',
+    fontSize: 20,
   },
   cardContainer: {
     flex: 1, 

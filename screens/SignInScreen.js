@@ -27,8 +27,6 @@ const SignInScreen = () => {
       const { email, password, confirm } = values;
       if (confirm) {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
-          console.log(value)
-          const id = value.user.uid
           db.collection('users').doc(value.user.uid).set({
             email: email
           })
@@ -40,6 +38,9 @@ const SignInScreen = () => {
       } else {
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
+            return (
+              <App />
+            );
           });
       }
     }
