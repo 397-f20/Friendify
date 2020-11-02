@@ -6,14 +6,14 @@ import firebase from '../shared/firebase';
 
 const HomeScreen = ({navigation}) => {
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('FriendSelect')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FriendSelect')}>
           <Text style={styles.text}>
             Generate Playlist
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity color="#448aff" onPress={() => firebase.auth().signOut()}>
+        <TouchableOpacity style={styles.button} onPress={() => firebase.auth().signOut()}>
           <Text style={styles.text}>
             Logout
           </Text>
@@ -24,30 +24,35 @@ const HomeScreen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  button: {
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    height: 60,
+    padding: 10,
+    minWidth: 90,
+    maxWidth: 90,
+    backgroundColor: '#66b0ff',
+  },
   container: {
     flex: 1,
-    backgroundColor: '#F4F4F4',
-    flexDirection: 'row',
-    borderRadius: 20,
-    height: 80,
-    width: '100%',
-    marginVertical: 5,
     alignItems: 'center',
-    padding: 10,
-  },
-  text: {
-    color: '#707070',
-    fontSize: 20,
+    justifyContent: 'center',
+    paddingTop: 20,
   },
   cardContainer: {
-    flex: 1, 
-    marginBottom: 250,
-    width: '80%',
-    justifyContent: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
-  card: {
-    width: '100%',
-  }
+  text:{
+    color: '#fff',
+    fontSize: 12,
+    textAlign: 'center',
+  },
 });
 
 export default HomeScreen;
