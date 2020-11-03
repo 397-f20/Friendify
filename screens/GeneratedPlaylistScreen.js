@@ -12,7 +12,8 @@ import UserContext from '../utils/userContext';
 //We're getting a react warning with the textInput. maybe setting a value as undefined?
 const GeneratePlaylistFormScreen = ({navigation, route}) => {
   const friends = route.params.friends;
-  const chosenFriends = route.params.chosenFriends;;
+  const chosenFriends = route.params.chosenFriends;
+  const numSongs = route.params.numSongs;
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = React.useState("");
   const db = firebase.firestore();
@@ -33,7 +34,7 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
     }));
     const unique = new Set(tempSongs);
     const uniqueData = [...unique];
-    let newPlaylist = getRandomSubarray(uniqueData, 15);
+    let newPlaylist = getRandomSubarray(uniqueData, numSongs);
     setSongs(newPlaylist);
   };
 

@@ -5,7 +5,7 @@ import FriendSelector from '../components/FriendSelector';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
 import UserContext from '../utils/userContext';
-import { Fragment } from 'react';
+import {Card, TextInput} from 'react-native-paper';
 
 const db = firebase.firestore();
 
@@ -14,6 +14,7 @@ const FriendSelectScreen = ({navigation}) => {
     const [newFriend, setNewFriend] = useState(false)
     const [chosenFriends, setChosenFriends] = useState([]);
     const user = useContext(UserContext);
+    const [numSongs, setNumSongs] = useState(15);
 
     useEffect(() => {
       db.collection('users').doc(user).get().then(doc => {
@@ -52,7 +53,17 @@ const FriendSelectScreen = ({navigation}) => {
                   <FriendSelector friends={friends} navigation={navigation} chosenFriends={chosenFriends} setChosenFriends={setChosenFriends} />
                 </View>
               </ScrollView>
-              <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends})}></Button>
+              <View>
+                  <Card style={styles.card}>
+                    <Card.Title style={styles.cardTitle}
+                      subtitle="Number of Songs:"></Card.Title>
+                    <Card.Content style={styles.cardContent}>
+                      <TextInput style={styles.textInput} placeholder="15" onChangeText={(value) => setNumSongs(value)}></TextInput>
+                    </Card.Content>
+                  </Card>
+                <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends, numSongs})}></Button>
+              </View>
+              
         </SafeAreaView>
     );
 };
