@@ -1,14 +1,38 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Song from './Song';
+import getSongInfo from '../spotifyQ/GetSongInfo';
+import GetSongInfo from '../spotifyQ/GetSongInfo';
 
 const SongList = ({songs}) => {
-    //console.log(songs);
+    const [songInfo, setSongInfo] = useState([]);
+
+    const getInfo = async(songIds) => {
+        let tempSongInfos = [];
+        await Promise.all(songIds.map(async (id) => {
+          const info = await GetSongInfo(id);
+
+          tempSongInfos = tempSongInfos.concat({
+            name: info.name,
+            artists: info.artists,
+            images: info.images,
+            id: id
+          });
+        }));
+        setSongInfo(tempSongInfos);
+    }
+
+    useEffect(()=>{
+      if (songs && songInfo.length === 0) {
+        getInfo(songs);
+      } 
+    }, [songs]);
+
     return(
       <View style={styles.save}>
 
         <ScrollView>
-          {songs.map(song => <Song key={song.id} song={song} />)}
+          {songInfo.map(song => <Song key={song.id} song={song} />)}
         </ScrollView>
       </View>
     )

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { View, StyleSheet, SafeAreaView, Text } from 'react-native';
 import firebase from "../shared/firebase.js";
@@ -9,7 +9,7 @@ import SongList from "../components/SongList";
 import {Button, Card, TextInput} from 'react-native-paper';
 import FriendSelectScreen from './FriendSelectScreen.js';
 import FriendsList from '../components/FriendsList.js';
-
+import UserContext from '../utils/userContext';
 
 //We're getting a react warning with the textInput. maybe setting a value as undefined?
 const GeneratePlaylistFormScreen = ({navigation, route}) => {
@@ -18,6 +18,8 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = React.useState("");
   const db = firebase.firestore();
+  const user = useContext(UserContext);
+  const [added, setAdded] = React.useState(false);
 
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
@@ -32,13 +34,18 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
       tempSongs = tempSongs.concat(newtemp)
     }));
     let newPlaylist = getRandomSubarray(tempSongs, 15);
+    console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
   const savePlaylist = (songs, name) => {
-    db.collection('Playlists').add({
-      playlistName: name,
-      songs: songs,
+    db.collection('users').doc(user).update({
+      playlists: firebase.firestore.FieldValue.arrayUnion({
+        name: name,
+        songs: songs
+      })
+    }).then(()=> {
+      setAdded(true);
     })
   }; 
 
@@ -60,6 +67,7 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
               <TextInput label="New Playlist Name"
                           placeholder="My Playlist"
               onChangeText={(value) => setPlaylistName(value)} ></TextInput>
+              {(added) ? <Text>Added {playlistName}!</Text> : false}
             </Card.Content>
             <Card.Actions>
               <Button onPress={() => savePlaylist(songs, playlistName)}>Save Playlist</Button>

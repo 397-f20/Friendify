@@ -8,7 +8,7 @@ const FriendPlaylistButton = ({navigation, playlist}) => {
     const [play, setPlay] = useState(false);
     const playlistName = playlist.name;
     useEffect(() => {
-        const href = playlist.songs.href.replace("/tracks", "");;
+        const href = playlist.songs.href.replace("/tracks", "");
         GetPlaylist(href).then((val) => {
             setPlay(val);
         })
