@@ -20,12 +20,10 @@ const FriendsScreen = ({navigation}) => {
         if (fr) {
           setFriends(fr);
         } else {
-          console.log("no friends rip");
           setFriends(false);
         }
       });
     }, [newFriend]);
-
 
     return (
       <SafeAreaView style={styles.container}>

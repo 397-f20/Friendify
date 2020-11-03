@@ -15,7 +15,6 @@ const FriendPlaylists = ({navigation, name}) => {
     );
     },[])
     
-    console.log(playlists)
     if(playlists.length == 0) {
         return false
     }

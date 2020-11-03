@@ -31,7 +31,6 @@ describe('Add Friend Tests', () => {
             <AddFriendSearch/>
         );
         const button = screen.getByText(/Add Friend/i);
-        console.log(screen)
         fireEvent.change(screen.getByPlaceholderText(/Friend's Spotify User ID/i), userid);
         fireEvent.click(button);
         

@@ -6,7 +6,6 @@ import { shallow } from 'enzyme';
 afterEach(cleanup);
 
 describe('<App />', () => {
-  console.log("here")
   jest.useFakeTimers();
   it('Generate Button Test', async () => {
     const screen = render(

@@ -5,13 +5,14 @@ import "firebase/storage";
 import "firebase/firestore";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDRMqSdi86OmuTb1svijabx6-UeHsJAabc",
-    authDomain: "friendify-40f24.firebaseapp.com",
-    databaseURL: "https://friendify-40f24.firebaseio.com",
-    projectId: "friendify-40f24",
-    storageBucket: "friendify-40f24.appspot.com",
-    messagingSenderId: "571390882930",
-    appId: "1:571390882930:web:b9667175ee928f4d6f7eeb"
+    apiKey: "AIzaSyBRFgo0x987Yf0xDCewnUHCsGq22P7JnOU",
+    authDomain: "friendify2-electricboogaloo.firebaseapp.com",
+    databaseURL: "https://friendify2-electricboogaloo.firebaseio.com",
+    projectId: "friendify2-electricboogaloo",
+    storageBucket: "friendify2-electricboogaloo.appspot.com",
+    messagingSenderId: "290961903103",
+    appId: "1:290961903103:web:b2cf0ad8c4bc66540aebca",
+    measurementId: "G-7LSKZ6B9EH"
 };
 
 firebase.initializeApp(firebaseConfig);

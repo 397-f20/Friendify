@@ -22,7 +22,7 @@ const MyPlaylistsScreen = ({navigation}) => {
         });
         setPlaylists(Object.values(playlistList));
         })
-    }, [playlists]);
+    }, []);
 
     return (
         <SafeAreaView style={styles.container}>
