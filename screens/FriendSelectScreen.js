@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendSelector from '../components/FriendSelector';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
-
+import UserContext from '../utils/userContext';
+import { Fragment } from 'react';
 
 const db = firebase.firestore();
 
@@ -12,26 +13,44 @@ const FriendSelectScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
     const [newFriend, setNewFriend] = useState(false)
     const [chosenFriends, setChosenFriends] = useState([]);
+    const user = useContext(UserContext);
 
     useEffect(() => {
-      db.collection('friends').get().then(querySnapshot => {
-        let newfriends = [];
-        querySnapshot.forEach(doc =>{
-          let newfriend = doc.data();
-          newfriends.push({
-            id: doc.id,
-            name: newfriend.name,
-            displayName: newfriend.displayname,
-          })
-        });
-        setFriends(newfriends);
+      db.collection('users').doc(user).get().then(doc => {
+        var data = doc.data();
+        const fr = data.friends;
+        if(fr) {
+          let tempFriends = [];
+          for(let i = 0; i < fr.length; i++) {
+            tempFriends.push({
+              id: fr[i],
+              index: i,
+            });
+          }
+          setFriends(tempFriends);
+        } else {
+          setFriends(false);
+        }
+        //let newfriends = [];
+        // querySnapshot.forEach(doc =>{
+        //   let newfriend = doc.data();
+        //   newfriends.push({
+        //     id: doc.id,
+        //     name: newfriend.name,
+        //     displayName: newfriend.displayname,
+        //   })
+        // });
+        // setFriends(newfriends);
         let tempChosenFriends = []
-        for (let i = 0; i < newfriends.length; i++){
+        for (let i = 0; i < fr.length; i++){
           tempChosenFriends.push(false)
         }
         setChosenFriends(tempChosenFriends)
       });
     }, [newFriend]);
+
+    console.log(friends);
+    
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
