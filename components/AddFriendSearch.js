@@ -1,28 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {Button, Card, TextInput} from 'react-native-paper';
 import { makeRedirectUri } from 'expo-auth-session';
 import firebase from "../shared/firebase.js";
 import GetUserName from  "../spotifyQ/GetUserName.js";
+import UserContext from '../utils/userContext';
 makeRedirectUri();
 
 const db = firebase.firestore();
 
 const AddFriendSearch = ({setNewFriend}) => {
+  const user = useContext(UserContext);
+  const [friend, setFriend] = React.useState("");
+  //added tells us if they have added a friend
+  const [added, setAdded] = React.useState(false);
+
   const AddFriend = async (friend) => {
-    const displayname = await GetUserName(friend);
-    db.collection('friends').add( {
-      name: friend,
-      displayname: displayname
+    db.collection('users').doc(user).update({
+      friends: firebase.firestore.FieldValue.arrayUnion(friend)
     }).then(() => {
       setAdded(true)
       setNewFriend(friend)
     }
     )
   };
-  const [friend, setFriend] = React.useState("");
-  //added tells us if they have added a friend
-  const [added, setAdded] = React.useState(false);
 
   return (
       <View style={styles.cardContainer}>
