@@ -23,7 +23,6 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
     let tempPlaylists = [];
     await Promise.all(newfriends.map(async (friend) => {
       const newtemp = await GetUserPlaylistsIds(friend.id);
-      console.log(newtemp);
       tempPlaylists = tempPlaylists.concat(newtemp);
     }));
 
@@ -32,7 +31,9 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
       const newtemp = await GetPlaylist(id) 
       tempSongs = tempSongs.concat(newtemp)
     }));
-    let newPlaylist = getRandomSubarray(tempSongs, 15);
+    const unique = new Set(tempSongs);
+    const uniqueData = [...unique];
+    let newPlaylist = getRandomSubarray(uniqueData, 15);
     setSongs(newPlaylist);
   };
 

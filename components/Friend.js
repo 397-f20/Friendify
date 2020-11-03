@@ -5,7 +5,6 @@ import {Avatar} from 'react-native-paper';
 
 
 const Friend = ({displayName, friendID, navigation}) => {
-    console.log(displayName);
     return (
         <TouchableOpacity
             style={styles.container}
