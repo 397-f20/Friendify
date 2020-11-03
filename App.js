@@ -5,6 +5,7 @@ import BottomTabNavigator from './navigators/BottomTabNavigator';
 import firebase from './shared/firebase';
 import 'firebase/database';
 import SignInScreen from './screens/SignInScreen';
+import UserContext from './utils/userContext';
 
 const db = firebase.firestore();
 
@@ -43,9 +44,11 @@ const App = () => {
     )
   } else {
     return (
-      <NavigationContainer>
-        <BottomTabNavigator />
-      </NavigationContainer>
+      <UserContext.Provider value={user}>
+        <NavigationContainer>
+          <BottomTabNavigator />
+        </NavigationContainer>
+      </UserContext.Provider>
     );
   };
 };
