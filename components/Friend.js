@@ -8,7 +8,7 @@ const Friend = ({displayName, friendID, navigation}) => {
     return (
         <TouchableOpacity
             style={styles.container}
-            onPress={() => navigation.navigate('Playlists', {friendID})}>
+            onPress={() => navigation.navigate('Playlists', {displayName, friendID})}>
             <Avatar.Image
                 size={30}
                 source={require('../assets/favicon.png')}

@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendSelector from '../components/FriendSelector';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
-
+import UserContext from '../utils/userContext';
+import {Card, TextInput} from 'react-native-paper';
 
 const db = firebase.firestore();
 
@@ -12,26 +13,33 @@ const FriendSelectScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
     const [newFriend, setNewFriend] = useState(false)
     const [chosenFriends, setChosenFriends] = useState([]);
+    const user = useContext(UserContext);
+    const [numSongs, setNumSongs] = useState(15);
 
     useEffect(() => {
-      db.collection('friends').get().then(querySnapshot => {
-        let newfriends = [];
-        querySnapshot.forEach(doc =>{
-          let newfriend = doc.data();
-          newfriends.push({
-            id: doc.id,
-            name: newfriend.name,
-            displayName: newfriend.displayname,
-          })
-        });
-        setFriends(newfriends);
-        let tempChosenFriends = []
-        for (let i = 0; i < newfriends.length; i++){
+      db.collection('users').doc(user).get().then(doc => {
+        var data = doc.data();
+        const fr = data.friends;
+        if(fr) {
+          let tempFriends = [];
+          for(let i = 0; i < fr.length; i++) {
+            tempFriends.push({
+              id: fr[i],
+              index: i,
+            });
+          }
+          setFriends(tempFriends);
+        } else {
+          setFriends(false);
+        }
+        let tempChosenFriends = [];
+        for (let i = 0; i < fr.length; i++){
           tempChosenFriends.push(false)
         }
         setChosenFriends(tempChosenFriends)
       });
     }, [newFriend]);
+    
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
@@ -45,7 +53,17 @@ const FriendSelectScreen = ({navigation}) => {
                   <FriendSelector friends={friends} navigation={navigation} chosenFriends={chosenFriends} setChosenFriends={setChosenFriends} />
                 </View>
               </ScrollView>
-              <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends})}></Button>
+              <View>
+                  <Card style={styles.card}>
+                    <Card.Title style={styles.cardTitle}
+                      subtitle="Number of Songs:"></Card.Title>
+                    <Card.Content style={styles.cardContent}>
+                      <TextInput style={styles.textInput} placeholder="15" onChangeText={(value) => setNumSongs(value)}></TextInput>
+                    </Card.Content>
+                  </Card>
+                <Button title="Next" disabled={!chosenFriends.some(e => e === true)} onPress={() => navigation.navigate('GeneratedPlaylist', {chosenFriends, friends, numSongs})}></Button>
+              </View>
+              
         </SafeAreaView>
     );
 };
