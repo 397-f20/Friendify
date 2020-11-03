@@ -43,7 +43,7 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
             </View>
         )
     } else {
-
+        
     return (
         <View>
         {

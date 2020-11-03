@@ -6,8 +6,6 @@ import GetSongInfo from '../spotifyQ/GetSongInfo';
 const SongList = ({songs}) => {
     const [songInfo, setSongInfo] = useState([]);
 
-    console.log(songs);
-
     const getInfo = async(songIds) => {
         let tempSongInfos = [];
         await Promise.all(songIds.map(async (id) => {

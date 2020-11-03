@@ -54,7 +54,6 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
       for (let i = 0; i < chosenFriends.length; i++){
         if (chosenFriends[i]){
           newfriends.push(friends[i])
-          console.log(friends[i]);
         }
       }
       getFriendsPlaylists(newfriends);
