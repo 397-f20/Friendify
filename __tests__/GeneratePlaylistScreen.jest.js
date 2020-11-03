@@ -6,13 +6,11 @@ import { shallow } from 'enzyme';
 afterEach(cleanup);
 
 describe('<App />', () => {
-  console.log("here")
   jest.useFakeTimers();
-  it('Generate Button Test', async () => {
+  it('App Renders', async () => {
     const screen = render(
       <App />
     );
-    fireEvent.click(screen.getByText('Generate Playlist'))
 
   });
 });

@@ -18,13 +18,11 @@ const FriendsList = ({friends, navigation}) => {
         }));
         setNames(tempNames);
     }
-
     useEffect( () => {
-        if (friends && names.length==0) {
+        if (friends) {
             getDisplayNames(friends);
         }
     }, [friends]);
-
     if (!friends) {
        return (
            <View>

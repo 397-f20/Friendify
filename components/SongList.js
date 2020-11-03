@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { View, ScrollView, StyleSheet } from 'react-native';
 import Song from './Song';
-import getSongInfo from '../spotifyQ/GetSongInfo';
 import GetSongInfo from '../spotifyQ/GetSongInfo';
 
 const SongList = ({songs}) => {
@@ -13,14 +12,15 @@ const SongList = ({songs}) => {
         let tempSongInfos = [];
         await Promise.all(songIds.map(async (id) => {
           const info = await GetSongInfo(id);
-
+          //Sometimes, GetSongInfo Failes and info ends up being undefined. Conditional to avoid crashes
+          if (info){
           tempSongInfos = tempSongInfos.concat({
             name: info.name,
             artists: info.artists,
             images: info.images,
             id: id
           });
-        }));
+        }}));
         setSongInfo(tempSongInfos);
     }
 

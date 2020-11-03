@@ -25,7 +25,6 @@ const FriendsScreen = ({navigation}) => {
       });
     }, [newFriend]);
 
-
     return (
       <SafeAreaView style={styles.container}>
               <View style={styles.titleContainer}>
