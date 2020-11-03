@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
-
 import FriendPlaylistButton from './FriendPlaylistButton';
 import GetUserPlaylists from '../spotifyQ/GetUserPlaylists';
 
+const FriendPlaylists = ({navigation, id}) => {
+    const [playlists, setPlaylists] = useState([]);
 
-
-const FriendPlaylists = ({navigation, name}) => {
-
-    const [playlists, setPlaylists] = useState([])
     useEffect(() => {
-        GetUserPlaylists(name).then((value) => {
+        GetUserPlaylists(id).then((value) => {
             setPlaylists(value);
         }
     );
     },[])
     
-    console.log(playlists)
     if(playlists.length == 0) {
         return false
     }

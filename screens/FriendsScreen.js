@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext} from 'react';
 import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendsList from '../components/FriendsList';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
-
+import UserContext from '../utils/userContext';
 
 const db = firebase.firestore();
 
 const FriendsScreen = ({navigation}) => {
     const [friends, setFriends] = useState([]);
-    const [newFriend, setNewFriend] = useState(false)
+    const [newFriend, setNewFriend] = useState(false);
+    const user = useContext(UserContext);
 
     useEffect(() => {
-      db.collection('friends').get().then(querySnapshot => {
-        let newfriends = [];
-        querySnapshot.forEach(doc =>{
-          let newfriend = doc.data();
-          newfriends.push({
-            id: doc.id,
-            name: newfriend.name,
-            displayName: newfriend.displayname,
-          })
-        });
-        setFriends(newfriends);
+      db.collection('users').doc(user).get().then(doc => {
+        var data = doc.data();
+        const fr = data.friends;
+        if (fr) {
+          setFriends(fr);
+        } else {
+          setFriends(false);
+        }
       });
     }, [newFriend]);
 

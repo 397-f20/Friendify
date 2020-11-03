@@ -4,15 +4,16 @@ import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists'
 
 const FriendPlaylistScreen = ({navigation, route}) => {
-    const friend = route.params.friend;
+    const displayName = route.params.displayName;
+    const id = route.params.friendID; 
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
-                {(friend) ? <Title style={styles.title}>{`${friend.displayName}'s Playlists`}</Title> : false}
+                {(id) ? <Title style={styles.title}>{`${displayName}'s Playlists`}</Title> : false}
             </View>
             <ScrollView style={styles.scroll}>
                 <View>
-                    {(friend) ? <FriendPlaylists name={friend.name} navigation={navigation}/> : false}
+                    {(id) ? <FriendPlaylists id={id} navigation={navigation}/> : false}
                 </View>
             </ScrollView>
         </SafeAreaView>

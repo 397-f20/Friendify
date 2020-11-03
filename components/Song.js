@@ -7,8 +7,7 @@ const Song = ({song}) => {
       var res = artists.map(a => a.name);
       return res.join(", ");
     };
-    const url = song.images[0].url;
-
+    const url = (typeof song.images === 'undefined') ? "" : song.images[0].url;
     return(
     <TouchableOpacity
     style={styles.songContainer}>

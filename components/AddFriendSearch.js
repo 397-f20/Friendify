@@ -1,28 +1,42 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import {Button, Card, TextInput} from 'react-native-paper';
 import { makeRedirectUri } from 'expo-auth-session';
 import firebase from "../shared/firebase.js";
 import GetUserName from  "../spotifyQ/GetUserName.js";
+import UserContext from '../utils/userContext';
 makeRedirectUri();
 
 const db = firebase.firestore();
 
 const AddFriendSearch = ({setNewFriend}) => {
+  const user = useContext(UserContext);
+  const [displayName, setDisplayName] = useState("")
+  const [friend, setFriend] = useState("");
+  //added tells us if they have added a friend
+  const [added, setAdded] = useState(false);
+
+
   const AddFriend = async (friend) => {
-    const displayname = await GetUserName(friend);
-    db.collection('friends').add( {
-      name: friend,
-      displayname: displayname
+    db.collection('users').doc(user).update({
+      friends: firebase.firestore.FieldValue.arrayUnion(friend)
     }).then(() => {
       setAdded(true)
       setNewFriend(friend)
     }
     )
+    let tempname = await GetUserName(friend)
+    setDisplayName(tempname)
   };
-  const [friend, setFriend] = React.useState("");
-  //added tells us if they have added a friend
-  const [added, setAdded] = React.useState(false);
+
+  const ParseURL = (url) => {
+    const parsed = url.split('/')
+    //get element after 'user'
+    const Ind = parsed.indexOf('user') + 1
+    const tempUser = parsed[Ind]
+    const user = tempUser.split('?')[0]
+    setFriend(user)
+  }
 
   return (
       <View style={styles.cardContainer}>
@@ -30,8 +44,8 @@ const AddFriendSearch = ({setNewFriend}) => {
           <Card.Title style={styles.cardTitle}
             subtitle="Add a friend to your Friend List"></Card.Title>
           <Card.Content style={styles.cardContent}>
-            <TextInput style={styles.textInput} placeholder="Friend's Spotify User ID" onChangeText={(value) => setFriend(value)}></TextInput>
-            {(added) ? <Text>Added {friend}!</Text> : false}
+            <TextInput style={styles.textInput} placeholder="Friend's Spotify Profile Link" onChangeText={(value) => ParseURL(value)}></TextInput>
+            {(added) ? <Text>Added {displayName}!</Text> : false}
           </Card.Content>
           <Card.Actions>
             <Button onPress={() => ((friend != "") ? AddFriend(friend) :false)} >Add Friend</Button>

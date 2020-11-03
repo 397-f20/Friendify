@@ -1,7 +1,4 @@
 import getTokens from "../spotifyAuth/getAccessToken";
-import firebase from "../shared/firebase.js";
-
-const db = firebase.firestore();
 
 const GetUserPlaylistsIds = async(user) => {
 

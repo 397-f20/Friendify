@@ -12,7 +12,7 @@ const firebaseConfig = {
     storageBucket: "friendify-40f24.appspot.com",
     messagingSenderId: "571390882930",
     appId: "1:571390882930:web:b9667175ee928f4d6f7eeb"
-};
+  };
 
 firebase.initializeApp(firebaseConfig);
 
