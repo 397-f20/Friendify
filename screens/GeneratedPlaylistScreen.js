@@ -7,14 +7,12 @@ import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds";
 import getRandomSubarray from "../utils/getRandomSubarray";
 import SongList from "../components/SongList";
 import {Button, Card, TextInput} from 'react-native-paper';
-import FriendSelectScreen from './FriendSelectScreen.js';
-import FriendsList from '../components/FriendsList.js';
 import UserContext from '../utils/userContext';
 
 //We're getting a react warning with the textInput. maybe setting a value as undefined?
 const GeneratePlaylistFormScreen = ({navigation, route}) => {
-  const friends = route.params.friends
-  const chosenFriends = route.params.chosenFriends
+  const friends = route.params.friends;
+  const chosenFriends = route.params.chosenFriends;;
   const [songs, setSongs] = useState([]);
   const [playlistName, setPlaylistName] = React.useState("");
   const db = firebase.firestore();
@@ -24,7 +22,8 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
     await Promise.all(newfriends.map(async (friend) => {
-      const newtemp = await GetUserPlaylistsIds(friend.name);
+      const newtemp = await GetUserPlaylistsIds(friend.id);
+      console.log(newtemp);
       tempPlaylists = tempPlaylists.concat(newtemp);
     }));
 
@@ -34,7 +33,6 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
       tempSongs = tempSongs.concat(newtemp)
     }));
     let newPlaylist = getRandomSubarray(tempSongs, 15);
-    console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
@@ -54,6 +52,7 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
       for (let i = 0; i < chosenFriends.length; i++){
         if (chosenFriends[i]){
           newfriends.push(friends[i])
+          console.log(friends[i]);
         }
       }
       getFriendsPlaylists(newfriends);

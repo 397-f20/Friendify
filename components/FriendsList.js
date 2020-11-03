@@ -38,7 +38,6 @@ const FriendsList = ({friends, navigation}) => {
             </View>
         ); 
     } else {
-        console.log(names);
         return (
             <View>
             {

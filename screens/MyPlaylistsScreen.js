@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import MyPlaylists from '../components/MyPlaylists';
 import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
 import { Title } from 'react-native-paper';
 import firebase from "../shared/firebase.js";
+import UserContext from '../utils/userContext';
 
 const db = firebase.firestore();
 
 const MyPlaylistsScreen = ({navigation}) => {
     const [playlists, setPlaylists] = useState([]);
+    const user = useContext(UserContext);
+
     useEffect(() => {
-      db.collection('Playlists').get().then(querySnapshot => {
-        let playlistList = [];
-        querySnapshot.forEach(doc =>{
-          let playlist = doc.data();
-          playlistList.push(
-            {
-              id: doc.id,
-              name: playlist.playlistName,
-              songs: playlist.songs
-            })
-        });
-        setPlaylists(Object.values(playlistList));
-        })
+      db.collection('users').doc(user).get().then(doc => {
+        var data = doc.data();
+        const pl = data.playlists;
+        if(pl) {
+          setPlaylists(pl);
+        }
+        else {
+          setPlaylists(false);
+        }
+      })
     }, [playlists]);
 
     return (

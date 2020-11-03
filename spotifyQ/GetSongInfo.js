@@ -20,7 +20,6 @@ const GetSongInfo = async(id) => {
         if (typeof repo === 'undefined') {
           return [];
         }
-        console.log(repo);
         //const im = (typeof repo.images === 'undefined') ? [] : repo.album.images;
         var obj = {
             "name": repo.name,

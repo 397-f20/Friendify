@@ -8,7 +8,6 @@ const Song = ({song}) => {
       return res.join(", ");
     };
     const url = (typeof song.images === 'undefined') ? "" : song.images[0].url;
-    console.log(song);
     return(
     <TouchableOpacity
     style={styles.songContainer}>

@@ -31,25 +31,13 @@ const FriendSelectScreen = ({navigation}) => {
         } else {
           setFriends(false);
         }
-        //let newfriends = [];
-        // querySnapshot.forEach(doc =>{
-        //   let newfriend = doc.data();
-        //   newfriends.push({
-        //     id: doc.id,
-        //     name: newfriend.name,
-        //     displayName: newfriend.displayname,
-        //   })
-        // });
-        // setFriends(newfriends);
-        let tempChosenFriends = []
+        let tempChosenFriends = [];
         for (let i = 0; i < fr.length; i++){
           tempChosenFriends.push(false)
         }
         setChosenFriends(tempChosenFriends)
       });
     }, [newFriend]);
-
-    console.log(friends);
     
     return (
       <SafeAreaView style={styles.container}>

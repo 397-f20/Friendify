@@ -12,9 +12,7 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
     const getDisplayNames = async (tempFriends) => {
         let tempNames = [];
         await Promise.all(tempFriends.map(async (friend) => {
-            console.log(friend);
            const displayName = await GetUserName(friend.id);
-           console.log(displayName);
            tempNames = tempNames.concat({
                name: displayName,
                id: friend.id,
@@ -22,19 +20,14 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
             });
         }));
         setNames(tempNames);
-        console.log(tempNames);
     }
 
     useEffect( () => {
-        console.log(friends);
-        console.log(names);
         if (friends && names.length==0) {
             getDisplayNames(friends);
         }
     }, [friends]);
 
-
-    console.log(friends);
     if (!friends) {
         return(
             <View>
