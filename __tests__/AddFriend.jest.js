@@ -25,27 +25,14 @@ describe('Add Friend Tests', () => {
     //     }
     // });
 
-    it('Lookup User ID', async () => {
+    it('Lookup User renders', async () => {
         const userid = 'jrzax';
         const screen = render(
             <AddFriendSearch/>
         );
         const button = screen.getByText(/Add Friend/i);
-        fireEvent.change(screen.getByPlaceholderText(/Friend's Spotify User ID/i), userid);
+        fireEvent.change(screen.getByPlaceholderText(/Friend's Spotify Profile Link/i), userid);
         fireEvent.click(button);
-        
-        const access = await getTokens();
 
-        expect(global.fetch).toHaveBeenCalledWith(
-            'https://accounts.spotify.com/api/token', 
-            {
-                method: 'POST',
-                body: "grant_type=client_credentials",
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Authorization': 'Basic ZjZlMDMwMTRjZTdkNGY2OTlmYjQxOWExNTYxMTNlNmE6MzlhNzQ1M2IxNWU4NDI5NGExMTg2ZmY0NWVmMWU2NTA=',
-              },
-            },
-        )
     })
 })

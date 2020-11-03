@@ -7,11 +7,10 @@ afterEach(cleanup);
 
 describe('<App />', () => {
   jest.useFakeTimers();
-  it('Generate Button Test', async () => {
+  it('App Renders', async () => {
     const screen = render(
       <App />
     );
-    fireEvent.click(screen.getByText('Generate Playlist'))
 
   });
 });
