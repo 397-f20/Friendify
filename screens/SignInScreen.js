@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView, Image } from 'react-native';
 import * as Yup from 'yup';
 import firebase from '../shared/firebase';
 import Form from '../components/Form';
@@ -46,7 +46,8 @@ const SignInScreen = () => {
     }
     return (
         <SafeAreaView style={styles.container}>
-            <ScrollView>
+          <Text style={styles.title}>Friendify</Text>
+          <ScrollView>
             <Form
                 initialValues={{
                 email: '',
@@ -76,7 +77,7 @@ const SignInScreen = () => {
                 <Form.Field
                     name="confirm"
                     leftIcon="lock"
-                    placeholder="Confirm password"
+                    placeholder="Confirm password (if first time user)"
                     autoCapitalize="none"
                     autoCorrect={false}
                     secureTextEntry={true}
@@ -93,7 +94,7 @@ const SignInScreen = () => {
                 <Form.Button title={values => values.confirm ? 'Sign up' : 'Log in'} />
                 {<Form.ErrorMessage error={signInError} visible={true} />}
             </Form>
-            </ScrollView>
+          </ScrollView>
         </SafeAreaView>
     );
 };
@@ -103,16 +104,17 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#ccccb3',
+      backgroundColor: '#ebf2ff',
     },
     field: {
       height: 40,
       width: 300,
       padding: 5,
-      backgroundColor: 'white',
+      backgroundColor: '#f8f8ff',
     },
     fieldContainer: {
       marginBottom: 20,
+      width: 400,
       shadowColor: '#000',
       shadowOffset: {
         width: 0,
@@ -120,10 +122,19 @@ const styles = StyleSheet.create({
       },
       shadowOpacity: 0.23,
       shadowRadius: 2.62,
-      elevation: 4,
+      elevation: 5,
     },
     label: {
       fontWeight: 'bold',
+    },
+    title: {
+      fontSize: 50,
+      padding: 20,
+      color: 'darkgray'
+    },
+    logo: {
+      width: 50,
+      height: 40
     }
   });
 

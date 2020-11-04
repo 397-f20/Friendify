@@ -1,21 +1,16 @@
 import React from 'react';
 
-import { View, Button, StyleSheet, SafeAreaView, TouchableOpacity, Text } from 'react-native';
-import firebase from '../shared/firebase';
+import { View, Button, StyleSheet, SafeAreaView, TouchableOpacity, Text, Image } from 'react-native';
 
 
 const HomeScreen = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.cardContainer}>
+        <Image source={require('../assets/friendify.jpg')} style={styles.logo} />
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('FriendSelect')}>
           <Text style={styles.text}>
             Generate Playlist
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => firebase.auth().signOut()}>
-          <Text style={styles.text}>
-            Logout
           </Text>
         </TouchableOpacity>
       </View>
@@ -28,18 +23,19 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
-    height: 60,
+    margin: 30,
+    height: 50,
     padding: 10,
-    minWidth: 90,
-    maxWidth: 90,
-    backgroundColor: '#66b0ff',
+    minWidth: 150,
+    maxWidth: 150,
+    backgroundColor: '#a2adc5',
   },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 20,
+    backgroundColor: 'white'
   },
   cardContainer: {
     flex: 1,
@@ -50,9 +46,16 @@ const styles = StyleSheet.create({
   },
   text:{
     color: '#fff',
-    fontSize: 12,
+    fontSize: 14,
     textAlign: 'center',
   },
+  logo: {
+    marginTop: 50,
+    marginLeft: 45,
+    alignItems: 'center',
+    width: 250,
+    height: 250
+  }
 });
 
 export default HomeScreen;
