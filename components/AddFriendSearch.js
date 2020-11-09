@@ -26,7 +26,7 @@ const AddFriendSearch = ({setNewFriend}) => {
     }
     )
     let tempname = await GetUserName(friend)
-    setDisplayName(tempname)
+    setDisplayName(tempname.display_name)
   };
 
   const ParseURL = (url) => {

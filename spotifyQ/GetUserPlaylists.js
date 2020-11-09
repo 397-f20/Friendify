@@ -27,7 +27,8 @@ const GetUserPlaylists = async(user) => {
             playlists.push({
               name: playlist.name,
               songs: playlist.tracks,
-              id: playlist.id
+              id: playlist.id,
+              images: playlist.images
             }); 
           }
             

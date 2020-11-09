@@ -5,6 +5,7 @@ import FriendsList from '../components/FriendsList';
 import firebase from "../shared/firebase.js";
 import AddFriendSearch from '../components/AddFriendSearch';
 import UserContext from '../utils/userContext';
+import { useFocusEffect } from '@react-navigation/native';
 
 const db = firebase.firestore();
 
@@ -13,17 +14,19 @@ const FriendsScreen = ({navigation}) => {
     const [newFriend, setNewFriend] = useState(false);
     const user = useContext(UserContext);
 
-    useEffect(() => {
+    useFocusEffect(
+      React.useCallback(() => {
       db.collection('users').doc(user).get().then(doc => {
         var data = doc.data();
         const fr = data.friends;
-        if (fr) {
+        if (fr && fr.length !== 0) {
           setFriends(fr);
         } else {
           setFriends(false);
         }
       });
-    }, [newFriend]);
+    }, [newFriend])
+    );
 
     return (
       <SafeAreaView style={styles.container}>

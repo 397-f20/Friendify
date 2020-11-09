@@ -1,9 +1,8 @@
 import React, {useState } from 'react';
-import { StyleSheet, Button, View, SafeAreaView, Text, ScrollView, Image } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, ScrollView } from 'react-native';
 import * as Yup from 'yup';
 import firebase from '../shared/firebase';
 import Form from '../components/Form';
-import App from '../App.js';
 
 const db = firebase.firestore()
 const validationSchema = Yup.object().shape({
@@ -23,6 +22,8 @@ const validationSchema = Yup.object().shape({
 
 const SignInScreen = () => {
     const [signInError, setSignInError] = useState(''); 
+
+    //Switching screens is handled by onAuthStateChange in App.js
     async function handleSubmit(values) {
       const { email, password, confirm } = values;
       if (confirm) {
@@ -34,13 +35,9 @@ const SignInScreen = () => {
         ).catch(error => {
             setSignInError(error.message);
           });
-        return (<App />)
       } else {
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
-            return (
-              <App />
-            );
           });
       }
     }
@@ -58,6 +55,7 @@ const SignInScreen = () => {
                 onSubmit={values => handleSubmit(values)}
             >
                 <Form.Field
+                    style={styles.form}
                     name="email"
                     leftIcon="email"
                     placeholder="Enter email"
@@ -66,6 +64,7 @@ const SignInScreen = () => {
                     textContentType="emailAddress"
                 />
                 <Form.Field
+                    style={styles.form}
                     name="password"
                     leftIcon="lock"
                     placeholder="Enter password"
@@ -75,6 +74,7 @@ const SignInScreen = () => {
                     textContentType="password"
                 />
                 <Form.Field
+                   style={styles.form}
                     name="confirm"
                     leftIcon="lock"
                     placeholder="Confirm password (if first time user)"
@@ -84,6 +84,7 @@ const SignInScreen = () => {
                     textContentType="password"
                 />
                 <Form.Field
+                    style={styles.form}
                     name="spotifyid"
                     placeholder="Enter your Spotify ID (optional)"
                     autoCapitalize="none"

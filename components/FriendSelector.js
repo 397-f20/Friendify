@@ -14,7 +14,7 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
         await Promise.all(tempFriends.map(async (friend) => {
            const displayName = await GetUserName(friend.id);
            tempNames = tempNames.concat({
-               name: displayName,
+               name: displayName.display_name,
                id: friend.id,
                index: friend.index,
             });
@@ -43,7 +43,6 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
             </View>
         )
     } else {
-        
     return (
         <View>
         {

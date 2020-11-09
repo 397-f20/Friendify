@@ -16,7 +16,11 @@ const GetUserName = async(user) => {
             }
           });
         const repo = await response.json();  
-        return repo.display_name;
+        const obj = {
+          display_name: repo.display_name,
+          images: repo.images
+        }
+        return obj;
     } catch (err) {
         console.error(err);}
 }

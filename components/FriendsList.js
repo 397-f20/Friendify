@@ -10,10 +10,11 @@ const FriendsList = ({friends, navigation}) => {
     const getDisplayNames = async (tempFriends) => {
         let tempNames = [];
         await Promise.all(tempFriends.map(async (friend) => {
-           const displayName = await GetUserName(friend);
+           const userValue = await GetUserName(friend);
            tempNames = tempNames.concat({
-               name: displayName,
-               id: friend
+               name: userValue.display_name,
+               id: friend,
+               images: (userValue.images ? userValue.images : null)
             });
         }));
         setNames(tempNames);
@@ -47,7 +48,7 @@ const FriendsList = ({friends, navigation}) => {
                     return 0;
                 })
                 .map(friend => (
-                    <Friend key={friend.name} displayName={friend.name} friendID={friend.id} navigation={navigation} />
+                    <Friend key={friend.name} displayName={friend.name} friendID={friend.id} navigation={navigation} img={friend.images}/>
                 ))
             }
             </View>

@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity} from 'react-native';
 import { Avatar } from 'react-native-paper';
 import GetPlaylist from '../spotifyQ/GetPlaylist';
 
-const FriendPlaylistButton = ({navigation, playlist}) => {
+const FriendPlaylistButton = ({navigation, playlist, img}) => {
     const [play, setPlay] = useState(false);
     const playlistName = playlist.name;
     useEffect(() => {
@@ -23,7 +23,7 @@ const FriendPlaylistButton = ({navigation, playlist}) => {
             onPress={() => navigation.navigate('Playlist Tracks', {play, playlistName})}>
             <Avatar.Image
                 size={50}
-                source={require('../assets/favicon.png')}
+                source={{uri: img}}
                 style={styles.icon}
             />
             <Text style={styles.text}>

@@ -17,7 +17,7 @@ const FriendPlaylists = ({navigation, id}) => {
     }
     return (
         playlists.map(playlist => (
-            <FriendPlaylistButton key={playlist.id} playlist={playlist} navigation={navigation}/>
+            <FriendPlaylistButton key={playlist.id} playlist={playlist} navigation={navigation} img={playlist.images[0].url}/>
         ))
     );
 };

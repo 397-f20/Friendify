@@ -22,7 +22,6 @@ const App = () => {
   useEffect(() => {
     if (auth && auth.uid) {
       const usersRef = db.collection('users');
-
       usersRef
         .get()
         .then((querySnapshot) => {

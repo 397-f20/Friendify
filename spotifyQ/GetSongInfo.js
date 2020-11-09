@@ -16,7 +16,6 @@ const GetSongInfo = async(id) => {
             }
           });
         const repo = await response.json();
-        //console.log(repo);
         if (typeof repo === 'undefined') {
           return [];
         }
