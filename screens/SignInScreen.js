@@ -1,103 +1,61 @@
 import React, {useState } from 'react';
-import { StyleSheet, SafeAreaView, Text, ScrollView } from 'react-native';
+import { StyleSheet, SafeAreaView, Text, ScrollView, TouchableOpacity } from 'react-native';
 import * as Yup from 'yup';
 import firebase from '../shared/firebase';
 import Form from '../components/Form';
+import SignUp from '../components/SignUp';
+import LogIn from '../components/LogIn';
+
 
 const db = firebase.firestore()
-const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .required('Please enter a valid email')
-      .email()
-      .label('Email'),
-    password: Yup.string()
-      .required()
-      .min(6, 'Password must have at least 6 characters')
-      .label('Password'),
-    confirm: Yup.string()
-      .oneOf([Yup.ref('password'), null], 'Confirmation password must match password'),
-    spotifyid: Yup.string()
-      .label('Spotify User ID'),
-  });
 
 const SignInScreen = () => {
-    const [signInError, setSignInError] = useState(''); 
+    const [signInError, setSignInError] = useState('');
+    const [logInState, setLogInState] = useState(true);
 
+    const handleSwitch = () => {
+      console.log(logInState);
+      return (
+        setLogInState(!logInState)
+      )
+    }
     //Switching screens is handled by onAuthStateChange in App.js
-    async function handleSubmit(values) {
-      const { email, password, confirm } = values;
-      if (confirm) {
+    async function handleSignUp(values) {
+      const { email, password, spotifyid } = values;
         firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
           db.collection('users').doc(value.user.uid).set({
-            email: email
+            email: email,
+            spotifyid: spotifyid
           })
         }
         ).catch(error => {
             setSignInError(error.message);
-          });
-      } else {
+          }); 
+    }
+
+    async function handleLogIn(values) {
+      const { email, password, spotifyid } = values;
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
-          });
-      }
+          }); 
     }
-    return (
-        <SafeAreaView style={styles.container}>
-          <Text style={styles.title}>Friendify</Text>
-          <ScrollView>
-            <Form
-                initialValues={{
-                email: '',
-                password: '',
-                confirm: '',
-                }}
-                validationSchema={validationSchema}
-                onSubmit={values => handleSubmit(values)}
-            >
-                <Form.Field
-                    style={styles.form}
-                    name="email"
-                    leftIcon="email"
-                    placeholder="Enter email"
-                    autoCapitalize="none"
-                    keyboardType="email-address"
-                    textContentType="emailAddress"
-                />
-                <Form.Field
-                    style={styles.form}
-                    name="password"
-                    leftIcon="lock"
-                    placeholder="Enter password"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry={true}
-                    textContentType="password"
-                />
-                <Form.Field
-                   style={styles.form}
-                    name="confirm"
-                    leftIcon="lock"
-                    placeholder="Confirm password (if first time user)"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry={true}
-                    textContentType="password"
-                />
-                <Form.Field
-                    style={styles.form}
-                    name="spotifyid"
-                    placeholder="Enter your Spotify ID (optional)"
-                    autoCapitalize="none"
-                    autoCorrect={false}
-                    secureTextEntry={true}
-                    textContentType="username"
-                />
-                <Form.Button title={values => values.confirm ? 'Sign up' : 'Log in'} />
-                {<Form.ErrorMessage error={signInError} visible={true} />}
-            </Form>
-          </ScrollView>
-        </SafeAreaView>
-    );
+    console.log(logInState);
+    if (logInState) { 
+      return (
+          <SafeAreaView style={styles.container}>
+            <Text style={styles.title}>Friendify</Text>
+              <LogIn handleLogIn = {handleLogIn} signInError = {signInError}> </LogIn>
+              <TouchableOpacity onPress = {() => handleSwitch()}> <Text> Sign Up</Text> </TouchableOpacity>
+          </SafeAreaView>
+      );}
+      else {
+        return (
+          <SafeAreaView style={styles.container}>
+            <Text style={styles.title}>Friendify</Text>
+              <SignUp handleSignUp = {handleSignUp} signInError = {signInError}> </SignUp>
+              <TouchableOpacity onPress = {() => handleSwitch()}> <Text>Log In </Text> </TouchableOpacity>
+          </SafeAreaView>
+        )}
 };
 
 const styles = StyleSheet.create({
