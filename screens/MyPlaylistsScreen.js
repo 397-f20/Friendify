@@ -27,6 +27,8 @@ const MyPlaylistsScreen = ({navigation}) => {
         else {
           setPlaylists(false);
         }
+      }).catch(error => {
+        setPlaylists(false)
       })
     }, [])
     );

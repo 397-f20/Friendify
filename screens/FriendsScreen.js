@@ -24,6 +24,8 @@ const FriendsScreen = ({navigation}) => {
         } else {
           setFriends(false);
         }
+      }).catch(error => {
+        setFriends(false)
       });
     }, [newFriend])
     );

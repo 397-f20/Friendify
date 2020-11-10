@@ -22,7 +22,7 @@ const FriendSelector = ({friends, chosenFriends, setChosenFriends, navigation}) 
         setNames(tempNames);
     }
 
-    useEffect( () => {
+    useEffect(() => {
         if (friends && names.length==0) {
             getDisplayNames(friends);
         }
