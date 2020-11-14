@@ -13,18 +13,18 @@ const validationSchema = Yup.object().shape({
       .required()
       .min(6, 'Password must have at least 6 characters')
       .label('Password'),
-  });
+});
 
 const LogIn = ({handleLogIn, signInError}) => {
-return (
-    <Form
-        initialValues={{
-        email: '',
-        password: '',
-        }}
-        validationSchema={validationSchema}
-        onSubmit={values => handleLogIn(values)}
-    >
+    return (
+        <Form
+            initialValues={{
+            email: '',
+            password: '',
+            }}
+            validationSchema={validationSchema}
+            onSubmit={values => handleLogIn(values)}
+        >
         <Form.Field
             name="email"
             leftIcon="email"
@@ -45,6 +45,7 @@ return (
         <Form.Button title= 'Log in' />
         {<Form.ErrorMessage error={signInError} visible={true} />}
      </Form>
-)}
+    );
+};
 
 export default LogIn;

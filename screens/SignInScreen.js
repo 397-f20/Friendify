@@ -14,11 +14,11 @@ const SignInScreen = () => {
     const [logInState, setLogInState] = useState(true);
 
     const handleSwitch = () => {
-      console.log(logInState);
       return (
         setLogInState(!logInState)
-      )
-    }
+      );
+    };
+
     //Switching screens is handled by onAuthStateChange in App.js
     async function handleSignUp(values) {
       const { email, password, spotifyid } = values;
@@ -31,31 +31,37 @@ const SignInScreen = () => {
         ).catch(error => {
             setSignInError(error.message);
           }); 
-    }
+    };
 
     async function handleLogIn(values) {
       const { email, password, spotifyid } = values;
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
           }); 
-    }
-    console.log(logInState);
+    };
+
     if (logInState) { 
       return (
           <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Friendify</Text>
               <LogIn handleLogIn = {handleLogIn} signInError = {signInError}> </LogIn>
-              <TouchableOpacity onPress = {() => handleSwitch()}> <Text> Sign Up</Text> </TouchableOpacity>
+              <TouchableOpacity onPress = {() => handleSwitch()}>
+                <Text>Sign Up</Text>
+              </TouchableOpacity>
           </SafeAreaView>
-      );}
-      else {
-        return (
+      );
+    }
+    else {
+      return (
           <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Friendify</Text>
               <SignUp handleSignUp = {handleSignUp} signInError = {signInError}> </SignUp>
-              <TouchableOpacity onPress = {() => handleSwitch()}> <Text>Log In </Text> </TouchableOpacity>
+              <TouchableOpacity onPress = {() => handleSwitch()}>
+                <Text>Log In</Text>
+              </TouchableOpacity>
           </SafeAreaView>
-        )}
+      );
+    }
 };
 
 const styles = StyleSheet.create({

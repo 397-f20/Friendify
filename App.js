@@ -32,7 +32,8 @@ const App = () => {
                 }
               })
         });
-    } else {
+    }
+    else {
       setUser(null);
     }
   }, [auth]);
@@ -40,8 +41,9 @@ const App = () => {
   if (!user) {
     return (
       <SignInScreen />
-    )
-  } else {
+    );
+  }
+  else {
     return (
       <UserContext.Provider value={user}>
         <NavigationContainer>
@@ -49,7 +51,7 @@ const App = () => {
         </NavigationContainer>
       </UserContext.Provider>
     );
-  };
+  }
 };
 
 export default App;
