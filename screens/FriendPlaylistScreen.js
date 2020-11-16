@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
-import { StyleSheet, View, SafeAreaView, ScrollView, Text } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { StyleSheet, View, SafeAreaView, ScrollView, Text, TouchableOpacity} from 'react-native';
 import { Title } from 'react-native-paper';
 import FriendPlaylists from '../components/FriendPlaylists';
 import firebase from "../shared/firebase.js";
@@ -13,7 +12,7 @@ const FriendPlaylistScreen = ({navigation, route}) => {
     const displayName = route.params.displayName;
     const id = route.params.friendID; 
 
-    deleteFriend = (friendID) => {
+    var deleteFriend = (friendID) => {
         db.collection('users').doc(user).update({
             friends: firebase.firestore.FieldValue.arrayRemove(friendID)
         }).then(()=> {
