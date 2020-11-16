@@ -1,11 +1,29 @@
-import React from 'react';
-import { StyleSheet, View, SafeAreaView, ScrollView } from 'react-native';
+import React, {useState, useContext} from 'react';
+import { StyleSheet, View, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import { Title } from 'react-native-paper';
 import SongList from '../components/SongList';
+import firebase from "../shared/firebase.js";
+import UserContext from '../utils/userContext';
+
+const db = firebase.firestore();
 
 const PlaylistTracksScreen = ({navigation, route}) => {
     const playlist = route.params.play;
-    const playlistName = route.params.playlistName;;
+    const playlistName = route.params.playlistName;
+    const user = useContext(UserContext);
+
+    var deletePlaylist = (name) => {
+        var doc = db.collection('users').doc(user);
+        doc.get().then(d => {
+            var data = d.data();
+            const allPlaylists = data.playlists;
+            doc.update({
+                playlists: allPlaylists.filter(playlist => playlist.name !== name)
+            }).then(()=> {
+                navigation.navigate('My Playlists')
+            })
+        })
+    }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -15,6 +33,10 @@ const PlaylistTracksScreen = ({navigation, route}) => {
             <View style={styles.cardContainer}>
                 <SongList songs={playlist}/>
             </View>
+            <TouchableOpacity style={styles.remove}
+                onPress = {() => deletePlaylist(playlistName)}>
+                <Text style={styles.removeText}>Remove Playlist</Text> 
+            </TouchableOpacity>
         </SafeAreaView>
     );
 };
@@ -40,6 +62,17 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         textAlign: 'left',
       },
+      remove: {
+        width: '80%',
+        backgroundColor: '#fff',
+        height: 50,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+        removeText: {
+        color: '#707070',
+        fontSize: 20,
+    }
 });
 
 export default PlaylistTracksScreen;
