@@ -26,10 +26,7 @@ const GetPlaylist = async(playlistHref) => {
               console.log("null");
             } else {
               tracks.push(
-                //"name": item.track.name,
                 item.track.id,
-                //"artists": item.track.artists,
-                //"images": item.track.album.images,
             )
             }
             

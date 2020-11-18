@@ -8,6 +8,7 @@ import getRandomSubarray from "../utils/getRandomSubarray";
 import SongList from "../components/SongList";
 import {Button, Card, TextInput} from 'react-native-paper';
 import UserContext from '../utils/userContext';
+import GetUserName from '../spotifyQ/GetUserName';
 
 //We're getting a react warning with the textInput. maybe setting a value as undefined?
 const GeneratePlaylistFormScreen = ({navigation, route}) => {
@@ -23,18 +24,28 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
   const getFriendsPlaylists = async (newfriends) => {
     let tempPlaylists = [];
     await Promise.all(newfriends.map(async (friend) => {
+      var displayName = await GetUserName(friend.id);
       const newtemp = await GetUserPlaylistsIds(friend.id);
-      tempPlaylists = tempPlaylists.concat(newtemp);
+      let tupArr = newtemp.map( pl => {
+       return [pl, displayName.display_name]
+      })
+      tempPlaylists = tempPlaylists.concat(tupArr);
     }));
-
+    //console.log(tempPlaylists);
     let tempSongs = [];
-    await Promise.all(tempPlaylists.map(async (id) => {
-      const newtemp = await GetPlaylist(id) 
-      tempSongs = tempSongs.concat(newtemp)
+    await Promise.all(tempPlaylists.map(async (tup) => {
+      const newtemp = await GetPlaylist(tup[0])
+      //console.log(newtemp);
+      let tupSongs = newtemp.map( song => {
+        return [song, tup[1]]
+      })
+      tempSongs = tempSongs.concat(tupSongs)
     }));
-    const unique = new Set(tempSongs);
-    const uniqueData = [...unique];
-    let newPlaylist = getRandomSubarray(uniqueData, numSongs);
+    //console.log(tempSongs);
+    //const unique = new Set(tempSongs);
+    //const uniqueData = [...unique];
+    let newPlaylist = getRandomSubarray(tempSongs, numSongs);
+    console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
