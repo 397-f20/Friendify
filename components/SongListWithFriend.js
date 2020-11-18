@@ -6,9 +6,9 @@ import GetSongInfo from '../spotifyQ/GetSongInfo';
 const SongListWithFriend = ({songs}) => {
     const [songInfo, setSongInfo] = useState([]);
 
-    const getInfo = async(songIds) => {
+    const getInfo = async(songTups) => {
         let tempSongInfos = [];
-        await Promise.all(songIds.map(async (tup) => {
+        await Promise.all(songTups.map(async (tup) => {
           const info = await GetSongInfo(tup[0]);
           //Sometimes, GetSongInfo Failes and info ends up being undefined. Conditional to avoid crashes
           if (info){

@@ -1,7 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { StyleSheet, View, SafeAreaView, Text, TouchableOpacity} from 'react-native';
 import { Title } from 'react-native-paper';
-import SongList from '../components/SongList';
+import SongListWithFriend from '../components/SongListWithFriend';
 import firebase from "../shared/firebase.js";
 import UserContext from '../utils/userContext';
 
@@ -10,6 +10,7 @@ const db = firebase.firestore();
 const PlaylistTracksScreen = ({navigation, route}) => {
     const playlist = route.params.play;
     const playlistName = route.params.playlistName;
+    const fromFriends = route.params.fromFriends
     const user = useContext(UserContext);
 
     var deletePlaylist = (name) => {
@@ -25,13 +26,18 @@ const PlaylistTracksScreen = ({navigation, route}) => {
         })
     }
 
+    let songsWithFriends = []
+    for (let i = 0; i < playlist.length; i++){
+        songsWithFriends.push([playlist[i], fromFriends[i]])
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.titleContainer}>
                 {(playlist) ? <Title style={styles.title}>{playlistName}</Title> : false}
             </View>
             <View style={styles.cardContainer}>
-                <SongList songs={playlist}/>
+                <SongListWithFriend songs={songsWithFriends}/>
             </View>
             <TouchableOpacity style={styles.remove}
                 onPress = {() => deletePlaylist(playlistName)}>

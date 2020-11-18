@@ -23,7 +23,7 @@ const SongWithFriend = ({song}) => {
       <Text style={styles.artist}>
           {formatArtists(song.artists)}
       </Text>
-      <Text style={styles.artist}>
+      <Text style={styles.fromFriend}>
           From {song.friendWhoAdded}
       </Text>
     </View> 
@@ -55,6 +55,9 @@ const SongWithFriend = ({song}) => {
     text: {
       color: '#707070',
       fontSize: 20,
+    },
+    fromFriend: {
+      color: '#aec6c2'
     },
     artist: {
       color: '#707070',

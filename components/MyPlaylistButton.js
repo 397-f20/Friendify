@@ -7,9 +7,10 @@ import { Avatar } from 'react-native-paper';
 const MyPlaylistButton = ({playlist, navigation}) => {
     const playlistName = playlist.name;
     const play = playlist.songs;
+    const fromFriends = playlist.fromFriends
     return (
         <TouchableOpacity style={styles.container}
-            onPress={() => navigation.navigate('Playlist Tracks', {play, playlistName})}>
+            onPress={() => navigation.navigate('Playlist Tracks', {play, playlistName, fromFriends})}>
             <Avatar.Image
                 size={50}
                 source={require('../assets/favicon.png')}

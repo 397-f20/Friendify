@@ -5,7 +5,7 @@ import firebase from "../shared/firebase.js";
 import GetPlaylist from '../spotifyQ/GetPlaylist.js';
 import GetUserPlaylistsIds from "../spotifyQ/GetUserPlaylistsIds";
 import getRandomSubarray from "../utils/getRandomSubarray";
-import SongList from "../components/SongList";
+import SongListWithFriend from "../components/SongListWithFriend";
 import {Button, Card, TextInput} from 'react-native-paper';
 import UserContext from '../utils/userContext';
 import GetUserName from '../spotifyQ/GetUserName';
@@ -45,15 +45,22 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
     //const unique = new Set(tempSongs);
     //const uniqueData = [...unique];
     let newPlaylist = getRandomSubarray(tempSongs, numSongs);
-    console.log(newPlaylist);
+    // console.log(newPlaylist);
     setSongs(newPlaylist);
   };
 
   const savePlaylist = (songs, name) => {
+    const songIds = songs.map(songTup =>{
+      return songTup[0]
+    })
+    const songsFromFriends = songs.map(songTup =>{
+      return songTup[1]
+    })
     db.collection('users').doc(user).update({
       playlists: firebase.firestore.FieldValue.arrayUnion({
         name: name,
-        songs: songs
+        songs: songIds,
+        fromFriends: songsFromFriends
       })
     }).then(()=> {
       setAdded(true);
@@ -86,7 +93,7 @@ const GeneratePlaylistFormScreen = ({navigation, route}) => {
           </Card>
         </View>
       <View style={styles.cardContainer}>
-      {songs.length !== 0 ? <SongList songs={songs}/> : <Text>Generating...</Text>}
+      {songs.length !== 0 ? <SongListWithFriend songs={songs}/> : <Text>Generating...</Text>}
       </View>
     </SafeAreaView>
   );

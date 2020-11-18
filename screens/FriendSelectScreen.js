@@ -19,7 +19,6 @@ const FriendSelectScreen = ({navigation}) => {
 
     useFocusEffect(
       React.useCallback(() => {
-      console.log("useEffect")
       db.collection('users').doc(user).get().then(doc => {
         var data = doc.data();
         const fr = data.friends;
