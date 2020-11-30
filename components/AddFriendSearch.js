@@ -50,7 +50,7 @@ const AddFriendSearch = ({setNewFriend}) => {
             {(added) ? <Text>Added {displayName}!</Text> : false}
           </Card.Content>
           <Card.Actions>
-            <Button onPress={() => ((friend != "") ? AddFriend(friend) :false)} >Add Friend</Button>
+            <Button style={styles.button} onPress={() => ((friend != "") ? AddFriend(friend) :false)} > <Text style={styles.buttonText}>Add Friend </Text> </Button>
           </Card.Actions>
         </Card>
       </View>
@@ -62,6 +62,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     textAlign: 'left'
+  },
+  buttonText : {
+    color : '#5c918e',
+  },
+  button : {
+    backgroundColor: '#f8f8ff'
   },
   cardContainer: {
     flex: 1, 
@@ -79,7 +85,9 @@ const styles = StyleSheet.create({
   carContent: {
   },
   textInput: {
-  }
+  },
+  
+
 });
 
 export default AddFriendSearch;
