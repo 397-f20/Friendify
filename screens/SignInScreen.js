@@ -21,11 +21,11 @@ const SignInScreen = () => {
 
     //Switching screens is handled by onAuthStateChange in App.js
     async function handleSignUp(values) {
-      const { email, password, spotifyid } = values;
+      const { email, password } = values;
         firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
           db.collection('users').doc(value.user.uid).set({
             email: email,
-            spotifyid: spotifyid
+            
           })
         }
         ).catch(error => {
@@ -34,7 +34,7 @@ const SignInScreen = () => {
     };
 
     async function handleLogIn(values) {
-      const { email, password, spotifyid } = values;
+      const { email, password } = values;
         firebase.auth().signInWithEmailAndPassword(email, password).catch(error => {
             setSignInError(error.message);
           }); 
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: '#ebf2ff',
+      backgroundColor: '#d3e6e1',
     },
     field: {
       height: 40,

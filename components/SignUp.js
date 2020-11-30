@@ -14,8 +14,8 @@ const validationSchema = Yup.object().shape({
       .label('Password'),
     confirm: Yup.string()
       .oneOf([Yup.ref('password'), null], 'Confirmation password must match password'),
-    spotifyid: Yup.string()
-      .label('Spotify User ID'),
+    // spotifyid: Yup.string()
+    //   .label('Spotify User ID'),
   });
 
 const SignUp = ({handleSignUp, signInError}) => {
@@ -55,13 +55,13 @@ const SignUp = ({handleSignUp, signInError}) => {
                     secureTextEntry={true}
                     textContentType="password"
                 />
-                <Form.Field
+                {/* <Form.Field
                     name="spotifyid"
                     placeholder="Enter your Spotify ID (optional)"
                     autoCapitalize="none"
                     autoCorrect={false}
                     textContentType="username"
-                />
+                /> */}
                 <Form.Button title= 'Sign up' />
                 {<Form.ErrorMessage error={signInError} visible={true} />}
             </Form>

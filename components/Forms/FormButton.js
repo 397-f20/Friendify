@@ -4,7 +4,7 @@ import { useFormikContext } from 'formik';
 
 import Colors from './colors';
 
-export default function FormButton({ title, color = 'primary' }) {
+export default function FormButton({ title, color = 'mediumGrey' }) {
   const { handleSubmit, values } = useFormikContext();
   const text = typeof title === 'function' ? title(values) : title;
 

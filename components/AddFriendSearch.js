@@ -18,15 +18,17 @@ const AddFriendSearch = ({setNewFriend}) => {
 
 
   const AddFriend = async (friend) => {
-    db.collection('users').doc(user).update({
-      friends: firebase.firestore.FieldValue.arrayUnion(friend)
-    }).then(() => {
-      setAdded(true)
-      setNewFriend(friend)
-    }
-    )
     let tempname = await GetUserName(friend)
-    setDisplayName(tempname.display_name)
+    if (tempname) { 
+      setDisplayName(tempname.display_name)
+      db.collection('users').doc(user).update({
+        friends: firebase.firestore.FieldValue.arrayUnion(friend)
+      }).then(() => {
+        setAdded(true)
+        setNewFriend(friend)
+      }
+    )
+  }
   };
 
   const ParseURL = (url) => {

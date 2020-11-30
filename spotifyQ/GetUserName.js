@@ -15,14 +15,22 @@ const GetUserName = async(user) => {
               Authorization: `Bearer ${access}`
             }
           });
-        const repo = await response.json();  
+        const repo = await response.json(); 
+        if (repo.hasOwnProperty("error"))
+          {return false}; 
+        console.log(repo); 
+        
         const obj = {
           display_name: repo.display_name,
           images: repo.images
         }
+        console.log(obj);
+        
         return obj;
     } catch (err) {
-        console.error(err);}
+
+        console.error(err);
+        return false;}
 }
 
 export default GetUserName;
