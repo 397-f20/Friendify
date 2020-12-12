@@ -7,12 +7,13 @@ import {useNavigation} from '@react-navigation/native'
 import FriendPlaylistButton from '../components/FriendPlaylistButton';
 
 afterEach(cleanup);
-describe ('Friend Playlist Test'),() => {
+
+describe ('Friend Playlist Test', () => {
     it('List Renders', async() => {
         const screen = render(
-            <FriendPlaylistButton />
+            <FriendPlaylists />
           );
     }   
     );
 
-}
+});
