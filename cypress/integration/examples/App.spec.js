@@ -13,5 +13,16 @@ describe ('Test App', () => {
       cy.get("@email").type("testuser@fake.com")
       cy.get("@password").type("testtest")
       cy.get("@login").click()
+      cy.wait(10000);
+      cy.get('[data-focusable="true"]').contains(/logout/i).as("logout")
+      cy.get("@logout").click()
+      
+      
     });
+
+
+
+    
+
+    
   });
