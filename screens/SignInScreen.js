@@ -45,7 +45,7 @@ const SignInScreen = () => {
           <SafeAreaView style={styles.container}>
             <Text style={styles.title}>Friendify</Text>
               <LogIn handleLogIn = {handleLogIn} signInError = {signInError}> </LogIn>
-              <TouchableOpacity onPress = {() => handleSwitch()}>
+              <TouchableOpacity key={"pls"} onPress = {() => handleSwitch()}>
                 <Text>Sign Up</Text>
               </TouchableOpacity>
           </SafeAreaView>
@@ -57,7 +57,7 @@ const SignInScreen = () => {
             <Text style={styles.title}>Friendify</Text>
               <SignUp handleSignUp = {handleSignUp} signInError = {signInError}> </SignUp>
               <TouchableOpacity onPress = {() => handleSwitch()}>
-                <Text>Log In</Text>
+                <Text id="login" >Log In</Text>
               </TouchableOpacity>
           </SafeAreaView>
       );
