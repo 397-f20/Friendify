@@ -5,6 +5,8 @@ import getTokens from "../spotifyAuth/getAccessToken";
 import {describe, expect, it} from '@jest/globals'
 import {useNavigation} from '@react-navigation/native'
 import FriendPlaylists from '../components/FriendPlaylists';
+import FriendsList from '../components/FriendsList';
+import { View } from 'react-native';
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -25,26 +27,23 @@ describe('Add Friend Tests', () => {
     //         friends: [{displayName: 'joanna', name: 'jo'}]
     //     }
     // });
-
     it('Lookup User renders', async () => {
-        const userid = 'jrzax';
-        const screen = render(
-            <AddFriendSearch/>
-        );
-        const button = screen.getByText(/Add Friend/i);
-        fireEvent.change(screen.getByPlaceholderText(/Friend's Spotify Profile Link/i), userid);
-        fireEvent.click(button);
+      const userid = 'jrzax';
+      const screen = render(
+          <AddFriendSearch/>
+      );
+      const button = screen.getByText(/Add Friend/i);
+      fireEvent.change(screen.getByPlaceholderText(/Friend's Spotify Profile Link/i), userid);
+      fireEvent.click(button);
 
-    })
+  })
+
+   
     it ('generate Playlist renders', async () => {
-        const userid = 'jrzax';
-        const username = 'Jordan Zax'
-        const button = screen.getByText(username);
-        fireEvent.click(button);
-        
-        const screen = render(
-          <FriendPlaylists/>
+        const screen2 = render(
+          <FriendsList/>
         );
+        screen2.getByText(/No Friends/i);
 
     })
 })
