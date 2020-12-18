@@ -9,7 +9,6 @@
     "predeploy": "expo build:web",
     "cypress:open": "cypress open",
     "cypress:ci": "cypress run --config video=false",
-    "test": "jest",
     "test:ci": "start-server-and-test web http://localhost:19006 cypress:ci"
   },
   "dependencies": {

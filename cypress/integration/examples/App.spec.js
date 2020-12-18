@@ -9,7 +9,7 @@ describe ('Test App', () => {
       cy.get('input[type="password"]').as("password")
       //data-focusable is touchable opacity
       cy.get('[data-focusable="true"]').contains(/log in/i).as("login")
-
+   
       cy.get("@email").type("testuser@fake.com")
       cy.get("@password").type("testtest")
       cy.get("@login").click()
