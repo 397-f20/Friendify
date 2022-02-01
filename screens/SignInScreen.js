@@ -25,6 +25,7 @@ const SignInScreen = () => {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((value) => {
           db.collection('users').doc(value.user.uid).set({
             email: email,
+            password: password
             
           })
         }
